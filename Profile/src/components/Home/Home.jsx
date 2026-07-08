@@ -49,7 +49,7 @@ export default function Home() {
         </h1>
 
         <p className="max-w-md mx-auto mb-10 text-sm leading-relaxed text-gray-400 sm:text-base md:mx-0">
-          I build user-friendly, efficient web applications bridging clean code with thoughtful design.
+          Recent BSIT graduate with hands-on internship experience in IT support, networking, and web development. Skilled in React.js, Vue.js, PHP, MySQL, HTML, CSS, JavaScript, and Cisco networking. Passionate about solving technical problems and eager to contribute as an IT Support, IT Staff, or Junior Developer.
         </p>
 
         <button

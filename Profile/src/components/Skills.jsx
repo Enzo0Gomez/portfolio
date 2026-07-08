@@ -11,13 +11,28 @@ const skillGroups = [
         title: "Backend Development",
         skills: ["Node.js", "PHP", "MySQL"],
     },
+    {
+        tag: "TP",
+        title: "Tools & Practices",
+        skills: ["React.js", "REST API", "Git", "GitHub", "Responsive Design"],
+    },
+    {
+        tag: "TC",
+        title: "Technical",
+        skills: [
+            "Active Directory",
+            "Networking",
+            "Hardware Maintenance",
+            "Troubleshooting",
+        ],
+    },
 ];
 
 const Skills = () => {
     return (
         <div
             id="skills"
-            className="min-h-screen bg-[#0F0F0F] text-[#F5F5F0] px-6 py-20 sm:px-10 md:py-28"
+            className="bg-[#0F0F0F] text-[#F5F5F0] min-h-screen mx-auto px-6 sm:px-10"
         >
             <div className="max-w-5xl mx-auto">
                 <div className="flex items-baseline justify-between pb-6 mb-16 border-b border-white/10">
