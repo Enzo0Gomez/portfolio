@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
+
+// TODO: Palitan ang mga values na ito ng galing sa EmailJS dashboard mo
+const EMAILJS_SERVICE_ID = 'service_xxxxxxx';
+const EMAILJS_TEMPLATE_ID = 'template_xxxxxxx';
+const EMAILJS_PUBLIC_KEY = 'your_public_key_here';
 
 export default function Contact() {
     const [form, setForm] = useState({ name: '', email: '', message: '' });
+    const [status, setStatus] = useState('idle'); // idle | sending | success | error
 
     function handleChange(e) {
         const { name, value } = e.target;
@@ -10,9 +17,27 @@ export default function Contact() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        const subject = encodeURIComponent(`Message from ${form.name || 'website contact form'}`);
-        const body = encodeURIComponent(`${form.message}\n\n— ${form.name} (${form.email})`);
-        window.location.href = `mailto:gomezraizendan@gmail.com?subject=${subject}&body=${body}`;
+        setStatus('sending');
+
+        emailjs
+            .send(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                {
+                    name: form.name,
+                    email: form.email,
+                    message: form.message,
+                },
+                EMAILJS_PUBLIC_KEY
+            )
+            .then(() => {
+                setStatus('success');
+                setForm({ name: '', email: '', message: '' });
+            })
+            .catch((error) => {
+                console.error('EmailJS error:', error);
+                setStatus('error');
+            });
     }
 
     return (
@@ -117,10 +142,22 @@ export default function Contact() {
                         <div className="sm:col-span-2">
                             <button
                                 type="submit"
-                                className="px-5 py-2.5 font-medium text-black bg-white rounded-md transition-colors hover:bg-white/85"
+                                disabled={status === 'sending'}
+                                className="px-5 py-2.5 font-medium text-black bg-white rounded-md transition-colors hover:bg-white/85 disabled:opacity-50 disabled:cursor-not-allowed"
                             >
-                                Send message
+                                {status === 'sending' ? 'Sending...' : 'Send message'}
                             </button>
+
+                            {status === 'success' && (
+                                <p className="mt-3 text-sm text-green-400">
+                                    Message sent! I'll get back to you soon.
+                                </p>
+                            )}
+                            {status === 'error' && (
+                                <p className="mt-3 text-sm text-red-400">
+                                    Something went wrong. Please try again or email me directly.
+                                </p>
+                            )}
                         </div>
                     </form>
                 </div>
