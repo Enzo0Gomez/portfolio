@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 import emailjs from '@emailjs/browser';
 
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
@@ -8,6 +9,7 @@ const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 console.log('SID:', EMAILJS_SERVICE_ID);
 console.log('TID:', EMAILJS_TEMPLATE_ID);
 console.log('KEY:', EMAILJS_PUBLIC_KEY);
+
 export default function Contact() {
     const [form, setForm] = useState({ name: '', email: '', message: '' });
     const [status, setStatus] = useState('idle');
@@ -30,6 +32,14 @@ export default function Contact() {
         if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
             console.error('EmailJS configuration is missing!');
             setStatus('error');
+            
+            // SweetAlert2 para sa kulang na configuration
+            Swal.fire({
+                title: 'Configuration Error',
+                text: 'EmailJS configuration is missing!',
+                icon: 'error',
+                confirmButtonColor: '#FACC15', // Bagay sa dilaw mong theme
+            });
             return;
         }
 
@@ -45,10 +55,26 @@ export default function Contact() {
                 console.log('EmailJS success:', result.text);
                 setStatus('success');
                 setForm({ name: '', email: '', message: '' });
+
+                // SweetAlert2 kapag NATANGGAP/SUCCESS ang message
+                Swal.fire({
+                    title: 'Message Sent!',
+                    text: 'Salamat! Nakuha ko ang iyong mensahe.',
+                    icon: 'success',
+                    confirmButtonColor: '#FACC15',
+                });
             })
             .catch((error) => {
                 console.error('EmailJS error:', error);
                 setStatus('error');
+
+                // SweetAlert2 kapag HINDI NATANGGAP/ERROR
+                Swal.fire({
+                    title: 'Oops...',
+                    text: 'Something went wrong. Please try again.',
+                    icon: 'error',
+                    confirmButtonColor: '#FACC15',
+                });
             });
     }
 
@@ -127,7 +153,7 @@ export default function Contact() {
                             <div>
                                 <label htmlFor="email" className="block mb-2 text-sm font-medium text-white/70">Email</label>
                                 <input
-                                    type="email"
+                                    type="type"
                                     id="email"
                                     name="email"
                                     value={form.email}
@@ -161,17 +187,6 @@ export default function Contact() {
                             {status === 'sending' ? 'Sending...' : 'Send Message'}
                         </button>
                     </fieldset>
-
-                    {status === 'success' && (
-                        <p className="flex items-center gap-2 px-4 py-3 mt-2 text-sm text-green-400 border rounded-xl bg-green-400/10 border-green-400/20">
-                            ✓ Message sent successfully!
-                        </p>
-                    )}
-                    {status === 'error' && (
-                        <p className="flex items-center gap-2 px-4 py-3 mt-2 text-sm text-red-400 border rounded-xl bg-red-400/10 border-red-400/20">
-                            ✕ Something went wrong. Please try again.
-                        </p>
-                    )}
                 </form>
             </div>
         </div>
