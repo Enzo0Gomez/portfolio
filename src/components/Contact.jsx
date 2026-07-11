@@ -5,6 +5,9 @@ const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
+console.log('SID:', EMAILJS_SERVICE_ID);
+console.log('TID:', EMAILJS_TEMPLATE_ID);
+console.log('KEY:', EMAILJS_PUBLIC_KEY);
 export default function Contact() {
     const [form, setForm] = useState({ name: '', email: '', message: '' });
     const [status, setStatus] = useState('idle');
@@ -33,6 +36,7 @@ export default function Contact() {
         setStatus('sending');
 
         emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+            to_email: "gomezraizendan@gmail.com",
             from_name: form.name,
             reply_to: form.email,
             message: form.message,
