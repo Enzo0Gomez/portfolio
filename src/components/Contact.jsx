@@ -1,36 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 
-// TODO: Palitan ang mga values na ito ng galing sa EmailJS dashboard mo
-const EMAILJS_SERVICE_ID = 'service_xxxxxxx';
-const EMAILJS_TEMPLATE_ID = 'template_xxxxxxx';
-const EMAILJS_PUBLIC_KEY = 'your_public_key_here';
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 export default function Contact() {
     const [form, setForm] = useState({ name: '', email: '', message: '' });
-    const [status, setStatus] = useState('idle'); // idle | sending | success | error
+    const [status, setStatus] = useState('idle');
+
+    useEffect(() => {
+        if (EMAILJS_PUBLIC_KEY) {
+            emailjs.init(EMAILJS_PUBLIC_KEY);
+        }
+    }, []);
 
     function handleChange(e) {
         const { name, value } = e.target;
         setForm((prev) => ({ ...prev, [name]: value }));
+        if (status === 'error' || status === 'success') setStatus('idle');
     }
 
     function handleSubmit(e) {
         e.preventDefault();
+
+        if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+            console.error('EmailJS configuration is missing!');
+            setStatus('error');
+            return;
+        }
+
         setStatus('sending');
 
-        emailjs
-            .send(
-                EMAILJS_SERVICE_ID,
-                EMAILJS_TEMPLATE_ID,
-                {
-                    name: form.name,
-                    email: form.email,
-                    message: form.message,
-                },
-                EMAILJS_PUBLIC_KEY
-            )
-            .then(() => {
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+            from_name: form.name,
+            reply_to: form.email,
+            message: form.message,
+        })
+            .then((result) => {
+                console.log('EmailJS success:', result.text);
                 setStatus('success');
                 setForm({ name: '', email: '', message: '' });
             })
@@ -94,71 +102,47 @@ export default function Contact() {
 
             </div>
 
-            <div className="mt-6">
-                <div className="p-6 border rounded-xl border-white/15 sm:p-8">
-                    <h3 className="font-['Space_Grotesk'] text-xl font-semibold mb-6">
-                        Send a message
-                    </h3>
-                    <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                        <label className="flex flex-col gap-2">
-                            <span className="text-sm text-white/50">Name</span>
+            <div>
+                <div>
+                    <form onSubmit={handleSubmit} className="max-w-2xl mx-auto mt-16 space-y-6">
+                        <div>
+                            <label htmlFor="name" className="block mb-2 text-sm font-medium text-white/70">Name</label>
                             <input
                                 type="text"
+                                id="name"
                                 name="name"
-                                value={form.name}
-                                onChange={handleChange}
-                                placeholder="Your name"
-                                required
-                                className="px-3 py-2 bg-transparent border rounded-md border-white/20 text-white/90 placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
+                                value={formData.name}
+                                onChange={handleInputChange}
+                                className="w-full p-3 border border-gray-300 rounded-md"
                             />
-                        </label>
-
-                        <label className="flex flex-col gap-2">
-                            <span className="text-sm text-white/50">Email</span>
+                        </div>
+                        <div>
+                            <label htmlFor="email" className="block mb-2 text-sm font-medium text-white/70">Email</label>
                             <input
                                 type="email"
+                                id="email"
                                 name="email"
-                                value={form.email}
-                                onChange={handleChange}
-                                placeholder="you@example.com"
-                                required
-                                className="px-3 py-2 bg-transparent border rounded-md border-white/20 text-white/90 placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
+                                value={formData.email}
+                                onChange={handleInputChange}
+                                className="w-full p-3 border border-gray-300 rounded-md"
                             />
-                        </label>
-
-                        <label className="flex flex-col gap-2 sm:col-span-2">
-                            <span className="text-sm text-white/50">Message</span>
-                            <textarea
-                                name="message"
-                                value={form.message}
-                                onChange={handleChange}
-                                placeholder="Write your message"
-                                required
-                                rows={5}
-                                className="px-3 py-2 bg-transparent border rounded-md resize-none border-white/20 text-white/90 placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
-                            />
-                        </label>
-
-                        <div className="sm:col-span-2">
-                            <button
-                                type="submit"
-                                disabled={status === 'sending'}
-                                className="px-5 py-2.5 font-medium text-black bg-white rounded-md transition-colors hover:bg-white/85 disabled:opacity-50 disabled:cursor-not-allowed"
-                            >
-                                {status === 'sending' ? 'Sending...' : 'Send message'}
-                            </button>
-
-                            {status === 'success' && (
-                                <p className="mt-3 text-sm text-green-400">
-                                    Message sent! I'll get back to you soon.
-                                </p>
-                            )}
-                            {status === 'error' && (
-                                <p className="mt-3 text-sm text-red-400">
-                                    Something went wrong. Please try again or email me directly.
-                                </p>
-                            )}
                         </div>
+                        <div>
+                            <label htmlFor="message" className="block mb-2 text-sm font-medium text-white/70">Message</label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                value={formData.message}
+                                onChange={handleInputChange}
+                                className="w-full p-3 border border-gray-300 rounded-md"
+                            ></textarea>
+                        </div>
+                        <button
+                            type="submit"
+                            className="px-6 py-3 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                        >
+                            Send Message
+                        </button>
                     </form>
                 </div>
             </div>
