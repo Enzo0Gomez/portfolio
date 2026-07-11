@@ -104,52 +104,53 @@ export default function Contact() {
 
             <div className="max-w-2xl mx-auto mt-16">
                 <form onSubmit={handleSubmit} className="space-y-6">
-                    <div>
-                        <label htmlFor="name" className="block mb-2 text-sm font-medium text-white/70">Name</label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            value={form.name}
-                            onChange={handleChange}
-                            className="w-full p-3 text-white transition-colors border bg-white/5 border-white/10 rounded-xl focus:outline-none focus:border-white/30"
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="email" className="block mb-2 text-sm font-medium text-white/70">Email</label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            value={form.email}
-                            onChange={handleChange}
-                            className="w-full p-3 text-white transition-colors border bg-white/5 border-white/10 rounded-xl focus:outline-none focus:border-white/30"
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="message" className="block mb-2 text-sm font-medium text-white/70">Message</label>
-                        <textarea
-                            id="message"
-                            name="message"
-                            value={form.message}
-                            onChange={handleChange}
-                            rows="5"
-                            className="w-full p-3 text-white transition-colors border resize-none bg-white/5 border-white/10 rounded-xl focus:outline-none focus:border-white/30"
-                            required
-                        ></textarea>
-                    </div>
-                    
-                    <button
-                        type="submit"
-                        disabled={status === 'sending'}
-                        className="w-full px-8 py-3 text-sm font-medium text-black transition-colors bg-white sm:w-auto rounded-xl hover:bg-white/90 disabled:bg-white/50 disabled:cursor-not-allowed"
-                    >
-                        {status === 'sending' ? 'Sending...' : 'Send Message'}
-                    </button>
+                    <fieldset disabled={status === 'sending'} aria-busy={status === 'sending'} className="space-y-6 disabled:opacity-60">
+                        <div>
+                            <label htmlFor="name" className="block mb-2 text-sm font-medium text-white/70">Name</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                value={form.name}
+                                onChange={handleChange}
+                                className="w-full p-3 text-white transition-colors border bg-white/5 border-white/10 rounded-xl focus:outline-none focus:border-white/30"
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="email" className="block mb-2 text-sm font-medium text-white/70">Email</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                value={form.email}
+                                onChange={handleChange}
+                                className="w-full p-3 text-white transition-colors border bg-white/5 border-white/10 rounded-xl focus:outline-none focus:border-white/30"
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="message" className="block mb-2 text-sm font-medium text-white/70">Message</label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                value={form.message}
+                                onChange={handleChange}
+                                rows="5"
+                                className="w-full p-3 text-white transition-colors border resize-none bg-white/5 border-white/10 rounded-xl focus:outline-none focus:border-white/30"
+                                required
+                            ></textarea>
+                        </div>
 
-                    {/* Simple UX Feedback Messages */}
+                        <button
+                            type="submit"
+                            disabled={status === 'sending'}
+                            className="w-full px-8 py-3 text-sm font-medium text-black transition-colors bg-white sm:w-auto rounded-xl hover:bg-white/90 disabled:bg-white/50 disabled:cursor-not-allowed"
+                        >
+                            {status === 'sending' ? 'Sending...' : 'Send Message'}
+                        </button>
+                    </fieldset>
+
                     {status === 'success' && <p className="mt-2 text-sm text-green-400">Message sent successfully!</p>}
                     {status === 'error' && <p className="mt-2 text-sm text-red-400">Something went wrong. Please try again.</p>}
                 </form>
