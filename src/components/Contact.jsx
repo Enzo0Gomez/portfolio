@@ -108,31 +108,37 @@ export default function Contact() {
 
             <div className="max-w-2xl mx-auto mt-16">
                 <form onSubmit={handleSubmit} className="space-y-6">
-                    <fieldset disabled={status === 'sending'} aria-busy={status === 'sending'} className="space-y-6 disabled:opacity-60">
-                        <div>
-                            <label htmlFor="name" className="block mb-2 text-sm font-medium text-white/70">Name</label>
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                value={form.name}
-                                onChange={handleChange}
-                                className="w-full p-3 text-white transition-colors border bg-white/5 border-white/10 rounded-xl focus:outline-none focus:border-white/30"
-                                required
-                            />
+                    <fieldset disabled={status === 'sending'} aria-busy={status === 'sending'} className="space-y-6 disabled:opacity-50">
+
+                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                            <div>
+                                <label htmlFor="name" className="block mb-2 text-sm font-medium text-white/70">Name</label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    value={form.name}
+                                    onChange={handleChange}
+                                    placeholder="Juan Dela Cruz"
+                                    className="w-full p-3.5 text-white bg-white/5 border border-white/10 rounded-xl outline-none transition-all duration-200 placeholder:text-white/25 focus:border-yellow-400/60 focus:bg-white/[0.07] focus:ring-2 focus:ring-yellow-400/20"
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="email" className="block mb-2 text-sm font-medium text-white/70">Email</label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    value={form.email}
+                                    onChange={handleChange}
+                                    placeholder="juan@email.com"
+                                    className="w-full p-3.5 text-white bg-white/5 border border-white/10 rounded-xl outline-none transition-all duration-200 placeholder:text-white/25 focus:border-yellow-400/60 focus:bg-white/[0.07] focus:ring-2 focus:ring-yellow-400/20"
+                                    required
+                                />
+                            </div>
                         </div>
-                        <div>
-                            <label htmlFor="email" className="block mb-2 text-sm font-medium text-white/70">Email</label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                value={form.email}
-                                onChange={handleChange}
-                                className="w-full p-3 text-white transition-colors border bg-white/5 border-white/10 rounded-xl focus:outline-none focus:border-white/30"
-                                required
-                            />
-                        </div>
+
                         <div>
                             <label htmlFor="message" className="block mb-2 text-sm font-medium text-white/70">Message</label>
                             <textarea
@@ -140,8 +146,9 @@ export default function Contact() {
                                 name="message"
                                 value={form.message}
                                 onChange={handleChange}
-                                rows="5"
-                                className="w-full p-3 text-white transition-colors border resize-none bg-white/5 border-white/10 rounded-xl focus:outline-none focus:border-white/30"
+                                placeholder="Kumusta! I'd like to talk about..."
+                                rows="6"
+                                className="w-full p-3.5 text-white bg-white/5 border border-white/10 rounded-xl outline-none resize-none transition-all duration-200 placeholder:text-white/25 focus:border-yellow-400/60 focus:bg-white/[0.07] focus:ring-2 focus:ring-yellow-400/20"
                                 required
                             ></textarea>
                         </div>
@@ -149,14 +156,22 @@ export default function Contact() {
                         <button
                             type="submit"
                             disabled={status === 'sending'}
-                            className="w-full px-8 py-3 text-sm font-medium text-black transition-colors bg-white sm:w-auto rounded-xl hover:bg-white/90 disabled:bg-white/50 disabled:cursor-not-allowed"
+                            className="w-full px-8 py-3.5 text-sm font-semibold text-black transition-all duration-150 bg-yellow-400 sm:w-auto rounded-xl hover:bg-yellow-300 active:scale-95 disabled:bg-white/20 disabled:text-white/40 disabled:cursor-not-allowed"
                         >
                             {status === 'sending' ? 'Sending...' : 'Send Message'}
                         </button>
                     </fieldset>
 
-                    {status === 'success' && <p className="mt-2 text-sm text-green-400">Message sent successfully!</p>}
-                    {status === 'error' && <p className="mt-2 text-sm text-red-400">Something went wrong. Please try again.</p>}
+                    {status === 'success' && (
+                        <p className="flex items-center gap-2 px-4 py-3 mt-2 text-sm text-green-400 border rounded-xl bg-green-400/10 border-green-400/20">
+                            ✓ Message sent successfully!
+                        </p>
+                    )}
+                    {status === 'error' && (
+                        <p className="flex items-center gap-2 px-4 py-3 mt-2 text-sm text-red-400 border rounded-xl bg-red-400/10 border-red-400/20">
+                            ✕ Something went wrong. Please try again.
+                        </p>
+                    )}
                 </form>
             </div>
         </div>
