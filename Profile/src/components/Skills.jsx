@@ -48,7 +48,7 @@ const Skills = () => {
                     {skillGroups.map((group) => (
                         <div
                             key={group.title}
-                            className="flex flex-col gap-6 p-8 transition-colors bg-[#0F0F0F] hover:bg-white/[0.03] sm:p-10"
+                            className="flex flex-col gap-6 p-8 transition-colors bg-[#0F0F0F] hover:bg-white/[.2] sm:p-10"
                         >
                             <div className="flex items-center gap-3">
                                 <span className="flex items-center justify-center font-mono text-xs font-semibold border rounded-full size-9 bg-white/5 border-white/10 text-white/60">

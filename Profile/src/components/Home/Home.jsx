@@ -36,6 +36,23 @@ export default function Home() {
   return (
     <div id="home" className="min-h-screen bg-[#0F0F0F] flex flex-col md:flex-row items-center md:items-start p-6 sm:p-10 md:px-16 relative overflow-hidden">
 
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-16px); }
+        }
+        @keyframes spin-glow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .hex-float {
+          animation: float 5s ease-in-out infinite;
+        }
+        .hex-glow-ring {
+          animation: spin-glow 8s linear infinite;
+        }
+      `}</style>
+
       <div className="z-20 flex-1 max-w-2xl mt-8 text-center md:mt-32 md:text-left">
         <p className="text-yellow-400 font-['Space_Grotesk'] text-xs sm:text-sm font-semibold tracking-widest uppercase mb-4">
           Full Stack Developer
@@ -74,14 +91,28 @@ export default function Home() {
         </div>
       </div>
 
-      <div className=" flex flex-col items-center mt-10 md:mt-10 md:ml-[10em]">
-        <div className="relative w-64 h-60 sm:w-80 sm:h-72 md:w-[28em] md:h-[26em]">
+      <div className="flex flex-col items-center mt-10 md:mt-10 md:ml-[10em]">
+        <div className="hex-float relative w-64 h-60 sm:w-80 sm:h-72 md:w-[28em] md:h-[26em]">
+
+          {/* Glowing rotating border layer */}
+          <div
+            className="absolute inset-0 hex-glow-ring"
+            style={{
+              clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
+              background: 'conic-gradient(from 0deg, transparent, #FFD700, transparent 30%)',
+              filter: 'blur(6px)',
+              opacity: 0.8,
+            }}
+          />
+
+          {/* Static thin outline on top of glow for crisp edge */}
           <svg className="absolute inset-0" viewBox="0 0 200 200" fill="none">
             <polygon points="100,4 196,52 196,148 100,196 4,148 4,52"
               stroke="#FFD700" strokeWidth="1.5" opacity="0.6" />
             <polygon points="100,14 186,57 186,143 100,186 14,143 14,57"
               stroke="#FFD700" strokeWidth="0.5" opacity="0.25" />
           </svg>
+
           <img
             src={profileImage}
             alt="Dan Raizen Gomez"
