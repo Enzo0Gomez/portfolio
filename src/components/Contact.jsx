@@ -102,49 +102,57 @@ export default function Contact() {
 
             </div>
 
-            <div>
-                <div>
-                    <form onSubmit={handleSubmit} className="max-w-2xl mx-auto mt-16 space-y-6">
-                        <div>
-                            <label htmlFor="name" className="block mb-2 text-sm font-medium text-white/70">Name</label>
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleInputChange}
-                                className="w-full p-3 border border-gray-300 rounded-md"
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="email" className="block mb-2 text-sm font-medium text-white/70">Email</label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleInputChange}
-                                className="w-full p-3 border border-gray-300 rounded-md"
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="message" className="block mb-2 text-sm font-medium text-white/70">Message</label>
-                            <textarea
-                                id="message"
-                                name="message"
-                                value={formData.message}
-                                onChange={handleInputChange}
-                                className="w-full p-3 border border-gray-300 rounded-md"
-                            ></textarea>
-                        </div>
-                        <button
-                            type="submit"
-                            className="px-6 py-3 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                        >
-                            Send Message
-                        </button>
-                    </form>
-                </div>
+            <div className="max-w-2xl mx-auto mt-16">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                    <div>
+                        <label htmlFor="name" className="block mb-2 text-sm font-medium text-white/70">Name</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            value={form.name}
+                            onChange={handleChange}
+                            className="w-full p-3 text-white transition-colors border bg-white/5 border-white/10 rounded-xl focus:outline-none focus:border-white/30"
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="email" className="block mb-2 text-sm font-medium text-white/70">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={form.email}
+                            onChange={handleChange}
+                            className="w-full p-3 text-white transition-colors border bg-white/5 border-white/10 rounded-xl focus:outline-none focus:border-white/30"
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="message" className="block mb-2 text-sm font-medium text-white/70">Message</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            value={form.message}
+                            onChange={handleChange}
+                            rows="5"
+                            className="w-full p-3 text-white transition-colors border resize-none bg-white/5 border-white/10 rounded-xl focus:outline-none focus:border-white/30"
+                            required
+                        ></textarea>
+                    </div>
+                    
+                    <button
+                        type="submit"
+                        disabled={status === 'sending'}
+                        className="w-full px-8 py-3 text-sm font-medium text-black transition-colors bg-white sm:w-auto rounded-xl hover:bg-white/90 disabled:bg-white/50 disabled:cursor-not-allowed"
+                    >
+                        {status === 'sending' ? 'Sending...' : 'Send Message'}
+                    </button>
+
+                    {/* Simple UX Feedback Messages */}
+                    {status === 'success' && <p className="mt-2 text-sm text-green-400">Message sent successfully!</p>}
+                    {status === 'error' && <p className="mt-2 text-sm text-red-400">Something went wrong. Please try again.</p>}
+                </form>
             </div>
         </div>
     );
