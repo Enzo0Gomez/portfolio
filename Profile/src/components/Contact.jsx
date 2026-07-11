@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 
-console.log('SID:', import.meta.env.VITE_EMAILJS_SERVICE_ID);
-console.log('TID:', import.meta.env.VITE_EMAILJS_TEMPLATE_ID);
-console.log('KEY:', import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
+console.log('SID:', EMAILJS_SERVICE_ID);
+console.log('TID:', EMAILJS_TEMPLATE_ID);
+console.log('KEY:', EMAILJS_PUBLIC_KEY);
 export default function Contact() {
     const [form, setForm] = useState({ name: '', email: '', message: '' });
     const [status, setStatus] = useState('idle');
