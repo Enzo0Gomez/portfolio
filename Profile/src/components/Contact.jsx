@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 import emailjs from '@emailjs/browser';
 
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
@@ -8,6 +9,7 @@ const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 console.log('SID:', EMAILJS_SERVICE_ID);
 console.log('TID:', EMAILJS_TEMPLATE_ID);
 console.log('KEY:', EMAILJS_PUBLIC_KEY);
+
 export default function Contact() {
     const [form, setForm] = useState({ name: '', email: '', message: '' });
     const [status, setStatus] = useState('idle');
@@ -30,6 +32,14 @@ export default function Contact() {
         if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
             console.error('EmailJS configuration is missing!');
             setStatus('error');
+            
+            // SweetAlert2 para sa kulang na configuration
+            Swal.fire({
+                title: 'Configuration Error',
+                text: 'EmailJS configuration is missing!',
+                icon: 'error',
+                confirmButtonColor: '#FACC15', // Bagay sa dilaw mong theme
+            });
             return;
         }
 
@@ -45,10 +55,26 @@ export default function Contact() {
                 console.log('EmailJS success:', result.text);
                 setStatus('success');
                 setForm({ name: '', email: '', message: '' });
+
+                // SweetAlert2 kapag NATANGGAP/SUCCESS ang message
+                Swal.fire({
+                    title: 'Message Sent!',
+                    text: 'Salamat! Nakuha ko ang iyong mensahe.',
+                    icon: 'success',
+                    confirmButtonColor: '#FACC15',
+                });
             })
             .catch((error) => {
                 console.error('EmailJS error:', error);
                 setStatus('error');
+
+                // SweetAlert2 kapag HINDI NATANGGAP/ERROR
+                Swal.fire({
+                    title: 'Oops...',
+                    text: 'Something went wrong. Please try again.',
+                    icon: 'error',
+                    confirmButtonColor: '#FACC15',
+                });
             });
     }
 
@@ -108,31 +134,37 @@ export default function Contact() {
 
             <div className="max-w-2xl mx-auto mt-16">
                 <form onSubmit={handleSubmit} className="space-y-6">
-                    <fieldset disabled={status === 'sending'} aria-busy={status === 'sending'} className="space-y-6 disabled:opacity-60">
-                        <div>
-                            <label htmlFor="name" className="block mb-2 text-sm font-medium text-white/70">Name</label>
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                value={form.name}
-                                onChange={handleChange}
-                                className="w-full p-3 text-white transition-colors border bg-white/5 border-white/10 rounded-xl focus:outline-none focus:border-white/30"
-                                required
-                            />
+                    <fieldset disabled={status === 'sending'} aria-busy={status === 'sending'} className="space-y-6 disabled:opacity-50">
+
+                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                            <div>
+                                <label htmlFor="name" className="block mb-2 text-sm font-medium text-white/70">Name</label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    value={form.name}
+                                    onChange={handleChange}
+                                    placeholder="Juan Dela Cruz"
+                                    className="w-full p-3.5 text-white bg-white/5 border border-white/10 rounded-xl outline-none transition-all duration-200 placeholder:text-white/25 focus:border-yellow-400/60 focus:bg-white/[0.07] focus:ring-2 focus:ring-yellow-400/20"
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="email" className="block mb-2 text-sm font-medium text-white/70">Email</label>
+                                <input
+                                    type="type"
+                                    id="email"
+                                    name="email"
+                                    value={form.email}
+                                    onChange={handleChange}
+                                    placeholder="juan@email.com"
+                                    className="w-full p-3.5 text-white bg-white/5 border border-white/10 rounded-xl outline-none transition-all duration-200 placeholder:text-white/25 focus:border-yellow-400/60 focus:bg-white/[0.07] focus:ring-2 focus:ring-yellow-400/20"
+                                    required
+                                />
+                            </div>
                         </div>
-                        <div>
-                            <label htmlFor="email" className="block mb-2 text-sm font-medium text-white/70">Email</label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                value={form.email}
-                                onChange={handleChange}
-                                className="w-full p-3 text-white transition-colors border bg-white/5 border-white/10 rounded-xl focus:outline-none focus:border-white/30"
-                                required
-                            />
-                        </div>
+
                         <div>
                             <label htmlFor="message" className="block mb-2 text-sm font-medium text-white/70">Message</label>
                             <textarea
@@ -140,8 +172,9 @@ export default function Contact() {
                                 name="message"
                                 value={form.message}
                                 onChange={handleChange}
-                                rows="5"
-                                className="w-full p-3 text-white transition-colors border resize-none bg-white/5 border-white/10 rounded-xl focus:outline-none focus:border-white/30"
+                                placeholder="Kumusta! I'd like to talk about..."
+                                rows="6"
+                                className="w-full p-3.5 text-white bg-white/5 border border-white/10 rounded-xl outline-none resize-none transition-all duration-200 placeholder:text-white/25 focus:border-yellow-400/60 focus:bg-white/[0.07] focus:ring-2 focus:ring-yellow-400/20"
                                 required
                             ></textarea>
                         </div>
@@ -149,14 +182,11 @@ export default function Contact() {
                         <button
                             type="submit"
                             disabled={status === 'sending'}
-                            className="w-full px-8 py-3 text-sm font-medium text-black transition-colors bg-white sm:w-auto rounded-xl hover:bg-white/90 disabled:bg-white/50 disabled:cursor-not-allowed"
+                            className="w-full px-8 py-3.5 text-sm font-semibold text-black transition-all duration-150 bg-yellow-400 sm:w-auto rounded-xl hover:bg-yellow-300 active:scale-95 disabled:bg-white/20 disabled:text-white/40 disabled:cursor-not-allowed"
                         >
                             {status === 'sending' ? 'Sending...' : 'Send Message'}
                         </button>
                     </fieldset>
-
-                    {status === 'success' && <p className="mt-2 text-sm text-green-400">Message sent successfully!</p>}
-                    {status === 'error' && <p className="mt-2 text-sm text-red-400">Something went wrong. Please try again.</p>}
                 </form>
             </div>
         </div>

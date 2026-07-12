@@ -24,7 +24,7 @@ const education = [
 
 export default function Education() {
     return (
-        <div id="education" className="bg-[#0F0F0F] text-[#F5F5F0] min-h-auto px-10 py-10 ">
+        <div id="education" className="bg-[#0F0F0F] text-[#F5F5F0] min-h-screen px-10 py-10 ">
 
             <div className="flex items-end justify-between pb-10 mb-10 border-b border-white/10">
                 <div>
