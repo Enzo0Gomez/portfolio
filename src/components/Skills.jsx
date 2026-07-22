@@ -1,7 +1,7 @@
 import React from "react";
 import {
   SiHtml5,
-  SiCss3,
+  SiCss,
   SiJavascript,
   SiReact,
   SiTailwindcss,
@@ -23,7 +23,7 @@ import {
 // Map skill name -> icon component
 const skillIcons = {
   HTML: SiHtml5,
-  CSS: SiCss3,
+  CSS: SiCss,
   JavaScript: SiJavascript,
   React: SiReact,
   Tailwind: SiTailwindcss,
