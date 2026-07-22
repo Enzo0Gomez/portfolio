@@ -94,7 +94,7 @@ const Skills = () => {
           {skillGroups.map((group) => (
             <div
               key={group.title}
-              className={`relative flex flex-col gap-6 p-8 overflow-hidden transition-colors bg-[#0F0F0F] hover:bg-white/[0.03] sm:p-10`}
+              className={`relative flex flex-col gap-6 p-8 overflow-hidden transition-colors bg-[#0F0F0F]  hover:border-yellow-400/40 sm:p-10`}
             >
               {/* Soft accent glow */}
               <div
@@ -116,7 +116,7 @@ const Skills = () => {
                   return (
                     <span
                       key={skill}
-                      className="flex items-center gap-2 px-3 py-1.5 text-sm font-mono rounded-md bg-white/5 border border-white/10 text-white/70 transition-all hover:border-white/30 hover:text-white hover:bg-white/[0.08]"
+                      className="flex items-center gap-2 px-3 py-1.5 text-sm font-mono rounded-md bg-white/5 border border-white/10 text-white/70 transition-all  hover:border-yellow-400/40 hover:text-white hover:bg-white/[0.08]"
                     >
                       {Icon && <Icon className="size-4 shrink-0" />}
                       {skill}

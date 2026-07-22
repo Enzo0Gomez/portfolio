@@ -14,7 +14,7 @@ export default function Experience() {
             </div>
 
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3 sm:gap-8">
-                <div className="flex flex-col items-center justify-center gap-3 border border-white/10 rounded-xl p-7">
+                <div className="flex flex-col items-center justify-center gap-3 border hover:border-yellow-400/40 border-white/10 rounded-xl p-7">
                     <img src={blackfiber} alt="BlackFiber logo" className="w-32 h-auto sm:w-40 md:w-48 opacity-90" />
                     <p className="text-[13px] font-medium text-white uppercase tracking-widest text-center">
                         Internship - Feb 9 - April 24, 2026
@@ -48,7 +48,7 @@ export default function Experience() {
                 </div>
             </div>
 
-            <div className="p-6 mt-6 border border-white/10 rounded-xl sm:mt-8 sm:p-7">
+            <div className="p-6 mt-6 border hover:border-yellow-400/40 border-white/10 rounded-xl sm:mt-8 sm:p-7">
                 <p className="text-sm leading-[1.8] text-white">
                     Completed a 400-hour internship at BlackFiber Communications Corporation, gaining
                     hands-on experience in networking, system support, and technical troubleshooting,
