@@ -34,93 +34,77 @@ export default function Home() {
   };
 
   return (
-    <div id="home" className="min-h-screen bg-[#0F0F0F] flex flex-col md:flex-row items-center md:items-start p-6 sm:p-10 md:px-16 relative overflow-hidden">
-
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-16px); }
-        }
-        @keyframes spin-glow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        .hex-float {
-          animation: float 5s ease-in-out infinite;
-        }
-        .hex-glow-ring {
-          animation: spin-glow 8s linear infinite;
-        }
-      `}</style>
-
-      <div className="z-20 flex-1 max-w-2xl mt-8 text-center md:mt-32 md:text-left">
-        <p className="text-yellow-400 font-['Space_Grotesk'] text-xs sm:text-sm font-semibold tracking-widest uppercase mb-4">
+    <div id="home" className="min-h-screen bg-[#0F0F0F] flex flex-col md:flex-row">
+      {/* LEFT: Content */}
+      <div className="relative z-10 flex flex-col justify-center w-full px-6 py-16 md:w-1/2 sm:px-10 md:px-16 lg:px-20">
+        <p className="text-yellow-400 font-['Space_Grotesk'] text-xs sm:text-sm font-semibold tracking-widest uppercase mb-5">
           Full Stack Developer
         </p>
 
-        <h1 className="font-['Space_Grotesk'] text-4xl sm:text-5xl md:text-6xl font-bold text-[#F5F5F0] leading-none mb-1">
+        <h1 className="font-['Space_Grotesk'] text-5xl sm:text-6xl lg:text-7xl font-bold text-[#F5F5F0] leading-[0.95] mb-1">
           Dan Raizen
         </h1>
-        <h1 className="font-['Space_Grotesk'] text-4xl sm:text-5xl md:text-6xl font-bold text-yellow-400 leading-none mb-6">
+        <h1 className="font-['Space_Grotesk'] text-5xl sm:text-6xl lg:text-7xl font-bold text-yellow-400 leading-[0.95] mb-8">
           Gomez
         </h1>
 
-        <p className="max-w-md mx-auto mb-10 text-sm leading-relaxed text-gray-400 sm:text-base md:mx-0">
+        <p className="max-w-md mb-10 text-sm leading-relaxed text-gray-400 sm:text-base">
           Recent BSIT graduate with hands-on internship experience in IT support, networking, and web development. Skilled in React.js, Vue.js, PHP, MySQL, HTML, CSS, JavaScript, and Cisco networking. Passionate about solving technical problems and eager to contribute as an IT Support, IT Staff, or Junior Developer.
         </p>
 
         <button
           onClick={handleViewResume}
           aria-label="View Resume"
-          className="bg-yellow-400 hover:bg-yellow-300 active:scale-95 text-[#0F0F0F] font-['Space_Grotesk'] text-sm font-bold px-6 py-3 rounded-md transition-all duration-150"
+          className="self-start bg-yellow-400 hover:bg-yellow-300 active:scale-95 text-[#0F0F0F] font-['Space_Grotesk'] text-sm font-bold px-7 py-3.5 rounded-md transition-all duration-150"
         >
           View My Resume
         </button>
 
-        <div className="flex flex-wrap items-center justify-center gap-3 mt-8 md:justify-start sm:gap-4">
+        <div className="flex flex-wrap items-center gap-4 mt-12">
           <span className="text-xs tracking-widest text-gray-600 uppercase">Find me on</span>
           <div className="hidden w-8 h-px bg-gray-700 sm:block" />
-          <a href="https://www.linkedin.com/in/dan-raizen-gomez-403b84362/" target="_blank" rel="noopener noreferrer"
-            className="text-gray-500 hover:text-yellow-400 text-sm font-['Space_Grotesk'] transition-colors">
+          
+          {/* Added missing opening <a> tag */}
+          <a
+            href="https://www.linkedin.com/in/dan-raizen-gomez-403b84362/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-500 hover:text-yellow-400 text-sm font-['Space_Grotesk'] transition-colors"
+          >
             LinkedIn
           </a>
-          <a href="https://facebook.com/yourprofile" target="_blank" rel="noopener noreferrer"
-            className="text-gray-500 hover:text-yellow-400 text-sm font-['Space_Grotesk'] transition-colors">
+          
+          {/* Added missing opening <a> tag */}
+          <a
+            href="https://facebook.com/yourprofile"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-500 hover:text-yellow-400 text-sm font-['Space_Grotesk'] transition-colors"
+          >
             Facebook
           </a>
         </div>
       </div>
 
-      <div className="flex flex-col items-center mt-10 md:mt-10 md:ml-[10em]">
-        <div className="hex-float relative w-64 h-60 sm:w-80 sm:h-72 md:w-[28em] md:h-[26em]">
+      {/* RIGHT: Full-bleed image */}
+      <div className="relative w-full h-[50vh] md:h-auto md:w-1/2 overflow-hidden">
+        <img
+          src={profileImage}
+          alt="Dan Raizen Gomez"
+          className="absolute inset-0 object-cover w-full h-full"
+        />
 
-          {/* Glowing rotating border layer */}
-          <div
-            className="absolute inset-0 hex-glow-ring"
-            style={{
-              clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
-              background: 'conic-gradient(from 0deg, transparent, #FFD700, transparent 30%)',
-              filter: 'blur(6px)',
-              opacity: 0.8,
-            }}
-          />
+        {/* Gradient overlay for blending into dark bg */}
+        <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#0F0F0F] via-transparent to-transparent opacity-90 md:opacity-70" />
 
-          {/* Static thin outline on top of glow for crisp edge */}
-          <svg className="absolute inset-0" viewBox="0 0 200 200" fill="none">
-            <polygon points="100,4 196,52 196,148 100,196 4,148 4,52"
-              stroke="#FFD700" strokeWidth="1.5" opacity="0.6" />
-            <polygon points="100,14 186,57 186,143 100,186 14,143 14,57"
-              stroke="#FFD700" strokeWidth="0.5" opacity="0.25" />
-          </svg>
+        {/* Accent vertical line */}
+        <div className="absolute top-0 bottom-0 left-0 hidden w-px md:block bg-yellow-400/30" />
 
-          <img
-            src={profileImage}
-            alt="Dan Raizen Gomez"
-            className="absolute top-[8%] left-[7%] w-[86%] h-[88%] object-cover"
-            style={{
-              clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
-            }}
-          />
+        {/* Bottom-right label */}
+        <div className="absolute z-10 bottom-6 right-6 md:bottom-10 md:right-10">
+          <span className="font-mono text-xs tracking-widest uppercase text-white/60">
+            Portfolio &middot; 2026
+          </span>
         </div>
       </div>
     </div>
