@@ -32,9 +32,9 @@ const Skills = () => {
     return (
         <div
             id="skills"
-            className="bg-[#0F0F0F] text-[#F5F5F0] max-h-auto px-6 pt-[10em] sm:px-10 py-16 "
+            className="bg-[#0F0F0F] text-[#F5F5F0] max-h-auto px-6 pt-20 sm:px-10 py-16 "
         >
-            <div className="max-w-9xl mx-auto pt-[7em]">
+            <div className="pt-20 mx-auto max-w-9xl">
                 <div className="flex items-baseline justify-between pb-6 mb-16 border-b border-white/10">
                     <h1 className="font-['Space_Grotesk'] text-4xl sm:text-5xl md:text-6xl font-bold leading-none tracking-tight">
                         Skills
