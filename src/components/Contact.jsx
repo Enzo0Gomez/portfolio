@@ -145,7 +145,7 @@ export default function Contact() {
                                     name="name"
                                     value={form.name}
                                     onChange={handleChange}
-                                    placeholder="Juan Dela Cruz"
+                                    placeholder="Name"
                                     className="w-full p-3.5 text-white bg-white/5 border border-white/10 rounded-xl outline-none transition-all duration-200 placeholder:text-white/25 focus:border-yellow-400/60 focus:bg-white/[0.07] focus:ring-2 focus:ring-yellow-400/20"
                                     required
                                 />
@@ -158,7 +158,7 @@ export default function Contact() {
                                     name="email"
                                     value={form.email}
                                     onChange={handleChange}
-                                    placeholder="juan@email.com"
+                                    placeholder="@email.com"
                                     className="w-full p-3.5 text-white bg-white/5 border border-white/10 rounded-xl outline-none transition-all duration-200 placeholder:text-white/25 focus:border-yellow-400/60 focus:bg-white/[0.07] focus:ring-2 focus:ring-yellow-400/20"
                                     required
                                 />
