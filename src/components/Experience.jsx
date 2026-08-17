@@ -53,7 +53,7 @@ export default function Experience() {
                 />
             </div>
 
-            <div className="p-6 m-6 border hover:border-yellow-400/40 border-white/10 rounded-xl sm:mt-8 sm:p-7">
+            <div className="p-8 m-6 border hover:border-yellow-400/40 border-white/10 rounded-xl sm:mt-8 sm:p-7">
                 <p className="text-sm leading-[1.8] text-white">
                     Developed and maintained features for LEVEL, a relationship and dating platform.
                     Worked on both web and mobile application development, including UI improvements and feature implementation.
