@@ -1,12 +1,46 @@
 import React from 'react';
 import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDownload, faFileLines } from '@fortawesome/free-solid-svg-icons';
-import { faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import {
+  faArrowRight,
+  faCode,
+  faDownload,
+  faFileLines,
+  faLaptopCode,
+  faLocationDot,
+  faNetworkWired,
+  faStar,
+} from '@fortawesome/free-solid-svg-icons';
+import { faFacebook, faGithub, faLinkedin, faReact } from '@fortawesome/free-brands-svg-icons';
 import profileImage from '../../assets/pictures/Dan_toga.jpg';
 import resume from '../../assets/resume/Dan_Raizen_Gomez.docx?url';
 
-export default function Home() {
+const highlights = [
+  { label: 'React', icon: faReact },
+  { label: 'Web Development', icon: faLaptopCode },
+  { label: 'IT Support', icon: faCode },
+  { label: 'Networking', icon: faNetworkWired },
+];
+
+const socials = [
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/dan-raizen-gomez-403b84362/',
+    icon: faLinkedin,
+  },
+  {
+    label: 'GitHub',
+    href: 'https://github.com/enzo0gomez',
+    icon: faGithub,
+  },
+  {
+    label: 'Facebook',
+    href: 'https://facebook.com/yourprofile',
+    icon: faFacebook,
+  },
+];
+
+export default function Home({ setActiveSection }) {
   const handleViewResume = () => {
     const isMobile = window.innerWidth < 768;
 
@@ -39,99 +73,141 @@ export default function Home() {
   };
 
   return (
-    <div id="home" className="min-h-screen bg-[#0F0F0F] flex flex-col md:flex-row items-center md:items-start p-6 sm:p-10 md:px-16 relative overflow-hidden">
-
+    <section id="home" className="relative min-h-screen overflow-hidden bg-[#0F0F0F] px-6 py-12 text-[#F5F5F0] sm:px-10 lg:px-16">
       <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-16px); }
+        @keyframes home-rise {
+          from { opacity: 0; transform: translateY(18px); }
+          to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes spin-glow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
+        @keyframes home-float {
+          0%, 100% { transform: translateY(0) rotate(-1deg); }
+          50% { transform: translateY(-12px) rotate(1deg); }
         }
-        .hex-float {
-          animation: float 5s ease-in-out infinite;
+        @keyframes home-scan {
+          0% { transform: translateX(-110%); opacity: 0; }
+          18%, 72% { opacity: 0.8; }
+          100% { transform: translateX(110%); opacity: 0; }
         }
-        .hex-glow-ring {
-          animation: spin-glow 8s linear infinite;
+        @keyframes home-pulse {
+          0%, 100% { opacity: 0.42; transform: scale(1); }
+          50% { opacity: 0.78; transform: scale(1.03); }
+        }
+        .home-rise {
+          animation: home-rise 0.7s ease-out both;
+        }
+        .home-float {
+          animation: home-float 5.5s ease-in-out infinite;
+        }
+        .home-scan::after {
+          animation: home-scan 4.8s ease-in-out infinite;
+        }
+        .home-pulse {
+          animation: home-pulse 4s ease-in-out infinite;
         }
       `}</style>
 
-      <div className="z-20 flex-1 max-w-2xl mt-8 text-center md:mt-32 md:text-left">
-        <p className="text-yellow-400 font-['Space_Grotesk'] text-xs sm:text-sm font-semibold tracking-widest uppercase mb-4">
-          Full Stack Developer
-        </p>
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-yellow-400/50 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_78%_20%,rgba(250,204,21,0.10),transparent_30%),radial-gradient(circle_at_12%_80%,rgba(255,255,255,0.06),transparent_26%)]" />
 
-        <h1 className="font-['Space_Grotesk'] text-4xl sm:text-5xl md:text-6xl font-bold text-[#F5F5F0] leading-none mb-1">
-          Dan Raizen
-        </h1>
-        <h1 className="font-['Space_Grotesk'] text-4xl sm:text-5xl md:text-6xl font-bold text-yellow-400 leading-none mb-6">
-          Gomez
-        </h1>
+      <div className="relative z-10 mx-auto grid min-h-[calc(100vh-6rem)] max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="max-w-3xl text-center lg:text-left">
+          <div className="home-rise inline-flex items-center gap-2 rounded-full border border-yellow-400/30 bg-yellow-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-yellow-400">
+            <FontAwesomeIcon icon={faStar} />
+            Full Stack Developer
+          </div>
 
-        <p className="max-w-md mx-auto mb-10 text-sm leading-relaxed text-gray-400 sm:text-base md:mx-0">
-          Recent BSIT graduate with hands-on internship experience in IT support, networking, and web development. Skilled in React.js, Vue.js, PHP, MySQL, HTML, CSS, JavaScript, and Cisco networking. Passionate about solving technical problems and eager to contribute as an IT Support, IT Staff, or Junior Developer.
-        </p>
+          <h1 className="home-rise mt-6 font-['Space_Grotesk'] text-5xl font-bold leading-[0.95] text-white sm:text-6xl lg:text-7xl" style={{ animationDelay: '100ms' }}>
+            Dan Raizen
+            <span className="block text-yellow-400">Gomez</span>
+          </h1>
 
-        <button
-          onClick={handleViewResume}
-          aria-label="View Resume"
-          className="inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-300 active:scale-95 text-[#0F0F0F] font-['Space_Grotesk'] text-sm font-bold px-6 py-3 rounded-md transition-all duration-150"
-        >
-          <FontAwesomeIcon icon={faFileLines} />
-          View My Resume
-          <FontAwesomeIcon icon={faDownload} className="text-xs" />
-        </button>
+          <p className="home-rise mx-auto mt-6 max-w-2xl text-sm leading-8 text-white/65 sm:text-base lg:mx-0" style={{ animationDelay: '200ms' }}>
+            Recent BSIT graduate with hands-on experience in IT support, networking, web development, and mobile development. I build clean interfaces, solve practical technical problems, and keep learning through real projects.
+          </p>
 
-        <div className="flex flex-wrap items-center justify-center gap-3 mt-8 md:justify-start sm:gap-4">
-          <span className="text-xs tracking-widest text-gray-600 uppercase">Find me on</span>
-          <div className="hidden w-8 h-px bg-gray-700 sm:block" />
-          <a href="https://www.linkedin.com/in/dan-raizen-gomez-403b84362/" target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-gray-500 hover:text-yellow-400 text-sm font-['Space_Grotesk'] transition-colors">
-            <FontAwesomeIcon icon={faLinkedin} />
-            LinkedIn
-          </a>
-          <a href="https://facebook.com/yourprofile" target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-gray-500 hover:text-yellow-400 text-sm font-['Space_Grotesk'] transition-colors">
-            <FontAwesomeIcon icon={faFacebook} />
-            Facebook
-          </a>
+          <div className="home-rise mt-7 flex flex-wrap items-center justify-center gap-3 lg:justify-start" style={{ animationDelay: '300ms' }}>
+            {highlights.map((item) => (
+              <span key={item.label} className="inline-flex items-center gap-2 rounded-md border border-white/10 bg-white/[0.04] px-3 py-2 text-xs text-white/70 transition-colors hover:border-yellow-400/40 hover:text-white">
+                <FontAwesomeIcon icon={item.icon} className="text-yellow-400" />
+                {item.label}
+              </span>
+            ))}
+          </div>
+
+          <div className="home-rise mt-9 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start" style={{ animationDelay: '400ms' }}>
+            <button
+              onClick={handleViewResume}
+              aria-label="View Resume"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-yellow-400 px-6 py-3 text-sm font-bold text-[#0F0F0F] transition-all duration-200 hover:-translate-y-0.5 hover:bg-yellow-300 active:scale-95 sm:w-auto"
+            >
+              <FontAwesomeIcon icon={faFileLines} />
+              View My Resume
+              <FontAwesomeIcon icon={faDownload} className="text-xs" />
+            </button>
+
+            <a
+              href="#contact"
+              onClick={(event) => {
+                event.preventDefault();
+                setActiveSection('contact');
+              }}
+              className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-white/15 px-6 py-3 text-sm font-semibold text-white/80 transition-all duration-200 hover:-translate-y-0.5 hover:border-yellow-400/40 hover:text-yellow-400 sm:w-auto"
+            >
+              Contact Me
+              <FontAwesomeIcon icon={faArrowRight} className="text-xs" />
+            </a>
+          </div>
+
+          <div className="home-rise mt-9 flex flex-wrap items-center justify-center gap-4 lg:justify-start" style={{ animationDelay: '500ms' }}>
+            <span className="text-xs uppercase tracking-widest text-white/35">Find me on</span>
+            <div className="hidden h-px w-8 bg-white/15 sm:block" />
+            {socials.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-white/45 transition-colors hover:text-yellow-400"
+              >
+                <FontAwesomeIcon icon={social.icon} />
+                {social.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="home-rise relative mx-auto w-full max-w-md lg:max-w-lg" style={{ animationDelay: '250ms' }}>
+          <div className="home-pulse absolute -inset-5 rounded-[2rem] border border-yellow-400/20" />
+          <div className="home-float relative">
+            <div className="home-scan relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#151515] p-3 shadow-2xl shadow-black/40 after:absolute after:inset-y-0 after:w-28 after:bg-gradient-to-r after:from-transparent after:via-yellow-400/25 after:to-transparent">
+              <div className="overflow-hidden rounded-[1rem] bg-black">
+                <img
+                  src={profileImage}
+                  alt="Dan Raizen Gomez"
+                  className="h-[28rem] w-full object-cover object-top sm:h-[32rem]"
+                />
+              </div>
+            </div>
+
+            <div className="absolute -bottom-5 left-5 right-5 rounded-xl border border-white/10 bg-[#111]/95 p-4 shadow-xl backdrop-blur">
+              <p className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-yellow-400">
+                <FontAwesomeIcon icon={faLocationDot} />
+                Rizal, Philippines
+              </p>
+              <div className="grid grid-cols-2 gap-3 text-center">
+                <div>
+                  <p className="font-['Space_Grotesk'] text-xl font-bold text-white">BSIT</p>
+                  <p className="text-[11px] text-white/45">Graduate</p>
+                </div>
+                <div>
+                  <p className="font-['Space_Grotesk'] text-xl font-bold text-white">Full</p>
+                  <p className="text-[11px] text-white/45">Stack</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div className="flex flex-col items-center mt-10 md:mt-10 md:ml-[10em]">
-        <div className="hex-float relative w-64 h-60 sm:w-80 sm:h-72 md:w-[28em] md:h-[26em]">
-
-          {/* Glowing rotating border layer */}
-          <div
-            className="absolute inset-0 hex-glow-ring"
-            style={{
-              clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
-              background: 'conic-gradient(from 0deg, transparent, #FFD700, transparent 30%)',
-              filter: 'blur(6px)',
-              opacity: 0.8,
-            }}
-          />
-
-          {/* Static thin outline on top of glow for crisp edge */}
-          <svg className="absolute inset-0" viewBox="0 0 200 200" fill="none">
-            <polygon points="100,4 196,52 196,148 100,196 4,148 4,52"
-              stroke="#FFD700" strokeWidth="1.5" opacity="0.6" />
-            <polygon points="100,14 186,57 186,143 100,186 14,143 14,57"
-              stroke="#FFD700" strokeWidth="0.5" opacity="0.25" />
-          </svg>
-
-          <img
-            src={profileImage}
-            alt="Dan Raizen Gomez"
-            className="absolute top-[8%] left-[7%] w-[86%] h-[88%] object-cover"
-            style={{
-              clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
-            }}
-          />
-        </div>
-      </div>
-    </div>
+    </section>
   );
 }

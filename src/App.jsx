@@ -29,7 +29,7 @@ function App() {
       <Sidebar activeSection={activeSection} setActiveSection={setActiveSection} />
 
       <div className="flex-1">
-        <ActiveComponent />
+        <ActiveComponent setActiveSection={setActiveSection} />
       </div>
     </div>
   );
