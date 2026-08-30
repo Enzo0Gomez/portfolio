@@ -33,11 +33,7 @@ const socials = [
     href: 'https://github.com/enzo0gomez',
     icon: faGithub,
   },
-  {
-    label: 'Facebook',
-    href: 'https://facebook.com/yourprofile',
-    icon: faFacebook,
-  },
+ 
 ];
 
 export default function Home({ setActiveSection }) {
@@ -189,22 +185,7 @@ export default function Home({ setActiveSection }) {
               </div>
             </div>
 
-            <div className="absolute -bottom-5 left-5 right-5 rounded-xl border border-white/10 bg-[#111]/95 p-4 shadow-xl backdrop-blur">
-              <p className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-yellow-400">
-                <FontAwesomeIcon icon={faLocationDot} />
-                Rizal, Philippines
-              </p>
-              <div className="grid grid-cols-2 gap-3 text-center">
-                <div>
-                  <p className="font-['Space_Grotesk'] text-xl font-bold text-white">BSIT</p>
-                  <p className="text-[11px] text-white/45">Graduate</p>
-                </div>
-                <div>
-                  <p className="font-['Space_Grotesk'] text-xl font-bold text-white">Full</p>
-                  <p className="text-[11px] text-white/45">Stack</p>
-                </div>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>
