@@ -1,7 +1,10 @@
 import React from 'react';
 import Swal from 'sweetalert2';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDownload, faFileLines } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import profileImage from '../../assets/pictures/Dan_toga.jpg';
-import resume from '../../assets/resume/Dan_Raizen_Gomez.pdf';
+import resume from '../../assets/resume/Dan_Raizen_Gomez.docx?url';
 
 export default function Home() {
   const handleViewResume = () => {
@@ -10,17 +13,19 @@ export default function Home() {
     Swal.fire({
       title: '<span style="font-family: Space Grotesk, sans-serif; font-weight: 700; color: #FFFFFF;">My Resume</span>',
       html: `
-        <iframe 
-          src="${resume}" 
-          width="100%" 
-          height="${isMobile ? '60vh' : '500px'}" 
-          style="border: none; border-radius: 8px; display: block;"
-          title="Resume PDF"
-          loading="lazy"
-          allowfullscreen
-        />
+        <div style="padding: ${isMobile ? '1.5rem' : '2rem'}; text-align: center; color: #F5F5F0;">
+          <p style="margin: 0 0 1.25rem; color: #A3A3A3;">Open or download my resume document.</p>
+          <a
+            href="${resume}"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="display: inline-block; border-radius: 8px; background: #FACC15; color: #0F0F0F; font-weight: 700; padding: 0.8rem 1.2rem; text-decoration: none;"
+          >
+            Open Resume
+          </a>
+        </div>
       `,
-      width: isMobile ? '95%' : 860,
+      width: isMobile ? '95%' : 520,
       padding: '0.5rem',
       background: '#0F0F0F',
       showConfirmButton: false,
@@ -72,20 +77,24 @@ export default function Home() {
         <button
           onClick={handleViewResume}
           aria-label="View Resume"
-          className="bg-yellow-400 hover:bg-yellow-300 active:scale-95 text-[#0F0F0F] font-['Space_Grotesk'] text-sm font-bold px-6 py-3 rounded-md transition-all duration-150"
+          className="inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-300 active:scale-95 text-[#0F0F0F] font-['Space_Grotesk'] text-sm font-bold px-6 py-3 rounded-md transition-all duration-150"
         >
+          <FontAwesomeIcon icon={faFileLines} />
           View My Resume
+          <FontAwesomeIcon icon={faDownload} className="text-xs" />
         </button>
 
         <div className="flex flex-wrap items-center justify-center gap-3 mt-8 md:justify-start sm:gap-4">
           <span className="text-xs tracking-widest text-gray-600 uppercase">Find me on</span>
           <div className="hidden w-8 h-px bg-gray-700 sm:block" />
           <a href="https://www.linkedin.com/in/dan-raizen-gomez-403b84362/" target="_blank" rel="noopener noreferrer"
-            className="text-gray-500 hover:text-yellow-400 text-sm font-['Space_Grotesk'] transition-colors">
+            className="inline-flex items-center gap-2 text-gray-500 hover:text-yellow-400 text-sm font-['Space_Grotesk'] transition-colors">
+            <FontAwesomeIcon icon={faLinkedin} />
             LinkedIn
           </a>
           <a href="https://facebook.com/yourprofile" target="_blank" rel="noopener noreferrer"
-            className="text-gray-500 hover:text-yellow-400 text-sm font-['Space_Grotesk'] transition-colors">
+            className="inline-flex items-center gap-2 text-gray-500 hover:text-yellow-400 text-sm font-['Space_Grotesk'] transition-colors">
+            <FontAwesomeIcon icon={faFacebook} />
             Facebook
           </a>
         </div>

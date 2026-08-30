@@ -1,12 +1,25 @@
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBars,
+  faBriefcase,
+  faCertificate,
+  faEnvelope,
+  faGraduationCap,
+  faHouse,
+  faLayerGroup,
+  faUser,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 
 const navLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#experience", label: "Experience" },
-  { href: "#education", label: "Education" },
-  { href: "#certificates", label: "Certificates" },
-  { href: "#skills", label: "Skills" },
-  { href: "#contact", label: "Contact" },
+  { href: "#home", label: "Home", icon: faHouse },
+  { href: "#about", label: "About", icon: faUser },
+  { href: "#experience", label: "Experience", icon: faBriefcase },
+  { href: "#education", label: "Education", icon: faGraduationCap },
+  { href: "#certificates", label: "Certificates", icon: faCertificate },
+  { href: "#skills", label: "Skills", icon: faLayerGroup },
+  { href: "#contact", label: "Contact", icon: faEnvelope },
 ];
 
 const Sidebar = ({ activeSection, setActiveSection }) => {
@@ -45,27 +58,7 @@ const Sidebar = ({ activeSection, setActiveSection }) => {
           className="p-2 text-black transition-transform duration-200 active:scale-90"
           aria-label="Toggle menu"
         >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            className={`transition-transform duration-300 ease-in-out ${open ? "rotate-90" : "rotate-0"}`}
-          >
-            <path
-              d="M6 6l12 12M6 18L18 6"
-              strokeLinecap="round"
-              className={`transition-opacity duration-200 ${open ? "opacity-100" : "opacity-0"}`}
-              style={{ transformOrigin: "center" }}
-            />
-            <path
-              d="M3 6h18M3 12h18M3 18h18"
-              strokeLinecap="round"
-              className={`transition-opacity duration-200 ${open ? "opacity-0" : "opacity-100"}`}
-            />
-          </svg>
+          <FontAwesomeIcon icon={open ? faXmark : faBars} className="text-2xl" />
         </button>
       </div>
 
@@ -87,7 +80,10 @@ const Sidebar = ({ activeSection, setActiveSection }) => {
               }`}
               style={open ? { animationDelay: `${i * 40}ms` } : undefined}
             >
-              {link.label}
+              <span className="inline-flex items-center gap-3">
+                <FontAwesomeIcon icon={link.icon} className="w-4" />
+                {link.label}
+              </span>
             </a>
           ))}
         </div>
@@ -114,7 +110,10 @@ const Sidebar = ({ activeSection, setActiveSection }) => {
                   : "border-transparent text-black/80 hover:text-black hover:bg-black/10"
               }`}
             >
-              {link.label}
+              <span className="inline-flex items-center gap-3">
+                <FontAwesomeIcon icon={link.icon} className="w-4" />
+                {link.label}
+              </span>
             </a>
           ))}
         </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Sidebar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
+import About from './components/About';
 import Experience from './components/Experience';
 import Education from './components/Education';
 import Certificates from './components/Certificates';
@@ -9,6 +10,7 @@ import Skills from './components/Skills';
 
 const sections = {
   home: Home,
+  about: About,
   experience: Experience,
   education: Education,
   skills: Skills,

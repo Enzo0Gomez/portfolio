@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarDays, faCode, faGraduationCap, faLaptopCode, faSchool } from '@fortawesome/free-solid-svg-icons';
 
 const education = [
     {
@@ -30,6 +32,7 @@ export default function Education() {
                 <div>
 
                     <h1 className="font-['Space_Grotesk'] text-6xl font-bold leading-none">
+                        <FontAwesomeIcon icon={faGraduationCap} className="mr-4 text-yellow-400" />
                         Education
                     </h1>
                 </div>
@@ -44,10 +47,12 @@ export default function Education() {
                         >
                             <div className="flex flex-wrap items-start justify-between gap-6">
                                 <div className="flex-1 min-w-[260px]">
-                                    <span className="inline-block text-xs font-semibold font-['Space_Grotesk'] tracking-widest uppercase text-yellow-400 bg-yellow-400/10 px-3 py-1 rounded-full mb-4">
+                                    <span className="inline-flex items-center gap-2 text-xs font-semibold font-['Space_Grotesk'] tracking-widest uppercase text-yellow-400 bg-yellow-400/10 px-3 py-1 rounded-full mb-4">
+                                        <FontAwesomeIcon icon={faCalendarDays} />
                                         {item.year}
                                     </span>
                                     <h2 className="font-['Space_Grotesk'] text-2xl font-bold text-white leading-snug mb-1">
+                                        <FontAwesomeIcon icon={faSchool} className="mr-3 text-yellow-400/80" />
                                         {item.college_school}
                                     </h2>
                                     <p className="text-gray-500 text-sm font-['Space_Grotesk'] mb-1">
@@ -64,6 +69,7 @@ export default function Education() {
 
                             <div className="mb-6">
                                 <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 font-['Space_Grotesk'] mb-2">
+                                    <FontAwesomeIcon icon={faLaptopCode} className="mr-2 text-yellow-400" />
                                     Capstone Project
                                 </p>
                                 <p className="text-gray-300 text-sm leading-relaxed font-['Space_Grotesk']">
@@ -73,6 +79,7 @@ export default function Education() {
 
                             <div>
                                 <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 font-['Space_Grotesk'] mb-3">
+                                    <FontAwesomeIcon icon={faCode} className="mr-2 text-yellow-400" />
                                     Programming Languages Used
                                 </p>
                                 <div className="flex flex-wrap gap-3">
@@ -101,10 +108,12 @@ export default function Education() {
                         >
                             <div className="flex flex-wrap items-start justify-between gap-6">
                                 <div className="flex-1 min-w-[260px]">
-                                    <span className="inline-block text-xs font-semibold font-['Space_Grotesk'] tracking-widest uppercase text-yellow-400 bg-yellow-400/10 px-3 py-1 rounded-full mb-4">
+                                    <span className="inline-flex items-center gap-2 text-xs font-semibold font-['Space_Grotesk'] tracking-widest uppercase text-yellow-400 bg-yellow-400/10 px-3 py-1 rounded-full mb-4">
+                                        <FontAwesomeIcon icon={faCalendarDays} />
                                         {item.shs_year}
                                     </span>
                                     <h2 className="font-['Space_Grotesk'] text-2xl font-bold text-white leading-snug mb-1">
+                                        <FontAwesomeIcon icon={faSchool} className="mr-3 text-yellow-400/80" />
                                         {item.shs_school}
                                     </h2>
                                     <p className="text-gray-500 text-sm font-['Space_Grotesk'] mb-1">

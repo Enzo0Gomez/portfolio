@@ -1,43 +1,44 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  SiHtml5,
-  SiCss,
-  SiJavascript,
-  SiReact,
-  SiTailwindcss,
-  SiNodedotjs,
-  SiPhp,
-  SiMysql,
-  SiGit,
-  SiGithub,
-} from "react-icons/si";
+  faCss3Alt,
+  faGitAlt,
+  faGithub,
+  faHtml5,
+  faJs,
+  faNodeJs,
+  faPhp,
+  faReact,
+} from "@fortawesome/free-brands-svg-icons";
 import {
-  Webhook,
-  Smartphone,
-  ShieldCheck,
-  Network,
-  Wrench,
-  SearchCode,
-} from "lucide-react";
+  faDatabase,
+  faMobileScreenButton,
+  faNetworkWired,
+  faShieldHalved,
+  faScrewdriverWrench,
+  faCodeBranch,
+  faWind,
+  faBugSlash,
+} from "@fortawesome/free-solid-svg-icons";
 
 // Map skill name -> icon component
 const skillIcons = {
-  HTML: SiHtml5,
-  CSS: SiCss,
-  JavaScript: SiJavascript,
-  React: SiReact,
-  Tailwind: SiTailwindcss,
-  "Node.js": SiNodedotjs,
-  PHP: SiPhp,
-  MySQL: SiMysql,
-  "REST API": Webhook,
-  Git: SiGit,
-  GitHub: SiGithub,
-  "Responsive Design": Smartphone,
-  "Active Directory": ShieldCheck,
-  Networking: Network,
-  "Hardware Maintenance": Wrench,
-  Troubleshooting: SearchCode,
+  HTML: faHtml5,
+  CSS: faCss3Alt,
+  JavaScript: faJs,
+  React: faReact,
+  Tailwind: faWind,
+  "Node.js": faNodeJs,
+  PHP: faPhp,
+  MySQL: faDatabase,
+  "REST API": faCodeBranch,
+  Git: faGitAlt,
+  GitHub: faGithub,
+  "Responsive Design": faMobileScreenButton,
+  "Active Directory": faShieldHalved,
+  Networking: faNetworkWired,
+  "Hardware Maintenance": faScrewdriverWrench,
+  Troubleshooting: faBugSlash,
 };
 
 const skillGroups = [
@@ -112,13 +113,13 @@ const Skills = () => {
 
               <div className="relative flex flex-wrap gap-2">
                 {group.skills.map((skill) => {
-                  const Icon = skillIcons[skill];
+                  const icon = skillIcons[skill];
                   return (
                     <span
                       key={skill}
                       className="flex items-center gap-2 px-3 py-1.5 text-sm font-mono rounded-md bg-white/5 border border-white/10 text-white/70 transition-all  hover:border-yellow-400/40 hover:text-white hover:bg-white/[0.08]"
                     >
-                      {Icon && <Icon className="size-4 shrink-0" />}
+                      {icon && <FontAwesomeIcon icon={icon} className="w-4 shrink-0 text-yellow-400/80" />}
                       {skill}
                     </span>
                   );

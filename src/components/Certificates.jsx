@@ -1,4 +1,6 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCertificate, faEye, faFilePdf } from "@fortawesome/free-solid-svg-icons";
 import comp from "../assets/certificate/ComputerHardware.pdf";
 import net from "../assets/certificate/NetworkingBasics.pdf";
 import python from "../assets/certificate/PythonEssentials1.pdf";
@@ -42,7 +44,10 @@ export default function Certificates() {
         >
             <div className="flex items-start justify-between pb-10 border-b mb-14 border-white/10">
                 <div className="mt-5">
-                    <h2 className="font-['Space_Grotesk'] text-6xl font-bold leading-none">Certificates</h2>
+                    <h2 className="font-['Space_Grotesk'] text-6xl font-bold leading-none">
+                        <FontAwesomeIcon icon={faCertificate} className="mr-4 text-yellow-400" />
+                        Certificates
+                    </h2>
                 </div>
             </div>
 
@@ -60,6 +65,7 @@ export default function Certificates() {
 
                         <div className="p-5">
                             <p className="text-[11px] font-medium text-gray-400 uppercase tracking-widest mb-4">
+                                <FontAwesomeIcon icon={faFilePdf} className="mr-2 text-yellow-400" />
                                 {cert.name}
                             </p>
 
@@ -67,8 +73,9 @@ export default function Certificates() {
                                 <button
                                     onClick={() => openViewer(cert)}
                                     aria-label={`View ${cert.name}`}
-                                    className="flex-1 py-2 text-xs text-gray-300 transition border rounded-lg border-white/20 hover:bg-white/5"
+                                    className="inline-flex items-center justify-center flex-1 gap-2 py-2 text-xs text-gray-300 transition border rounded-lg border-white/20 hover:bg-white/5"
                                 >
+                                    <FontAwesomeIcon icon={faEye} />
                                     View
                                 </button>
                               
