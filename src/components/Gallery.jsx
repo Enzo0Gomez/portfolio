@@ -8,6 +8,9 @@ import vlanImage from '../assets/pictures/my_internship/vlan.jpg';
 import setupImage from '../assets/pictures/my_internship/setup.png';
 import hardwareImage from '../assets/pictures/my_internship/Hardware_basic.png';
 import officeImage from '../assets/pictures/my_internship/office.png';
+import practiceVlan from '../assets/pictures/my_internship/practice_create_vlan.png';
+import noc from '../assets/pictures/my_internship/noc.png';
+import system from '../assets/pictures/my_internship/system_deparment.png';
 
 const galleryItems = [
     {
@@ -47,10 +50,28 @@ const galleryItems = [
         image: hardwareImage,
     },
     {
-        title: 'Office Tools',
+        title: 'Practice VLAN Configuration',
+        category: 'Technical Support',
+        caption: 'Hands-on VLAN configuration and IP management work.',
+        image: practiceVlan,
+    },
+    {
+        title: 'Office with mentors',
         category: 'Documentation',
-        caption: 'Documentation and productivity tools used in daily support work.',
+        caption: 'Documentation and productivity enhancements used in daily support work.',
         image: officeImage,
+    },
+      {
+        title: 'system Department',
+        category: 'System Department',
+        caption: 'System department exposure, monitoring, and support activities.',
+        image: system,
+    },
+       {
+        title: 'NOC',
+        category: 'NOC Department',
+        caption: 'Network Operations Center exposure, monitoring, and support activities.',
+        image: noc,
     },
 ];
 
@@ -78,9 +99,8 @@ export default function Gallery() {
                     {galleryItems.map((item, index) => (
                         <figure
                             key={item.title}
-                            className={`group overflow-hidden rounded-xl border border-white/10 bg-white/[0.02] transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 ${
-                                index === 0 ? 'md:col-span-2' : ''
-                            }`}
+                            className={`group overflow-hidden rounded-xl border border-white/10 bg-white/[0.02] transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 ${index === 0 ? 'md:col-span-2' : ''
+                                }`}
                         >
                             <div className={`${index === 0 ? 'aspect-[16/9]' : 'aspect-[4/3]'} overflow-hidden bg-[#151515]`}>
                                 <img
