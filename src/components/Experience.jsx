@@ -13,7 +13,8 @@ import {
     faScrewdriverWrench,
 } from '@fortawesome/free-solid-svg-icons';
 import { faAndroid, faDocker, faGithub, faLinux, faPython, faReact } from '@fortawesome/free-brands-svg-icons';
-import blackfiber from '../assets/pictures/BlackFiber_Logo.png';
+import blackfiberDark from '../assets/pictures/BlackFiber_Logo_darktheme.png';
+import blackfiberLight from '../assets/pictures/BlackFiber_Logo_lighttheme.png';
 import DNA from '../assets/pictures/DNA.png';
 
 const experiences = [
@@ -56,7 +57,10 @@ const experiences = [
     },
     {
         company: 'BlackFiber Communications Corporation',
-        logo: blackfiber,
+        logo: {
+            dark: blackfiberDark,
+            light: blackfiberLight,
+        },
         role: 'Internship',
         period: 'Feb 9 - April 24, 2026',
         summary: 'Completed a 400-hour internship focused on IT support, networking, systems, and technical troubleshooting.',
@@ -111,7 +115,7 @@ function TagList({ group }) {
     );
 }
 
-export default function Experience() {
+export default function Experience({ theme = 'dark' }) {
     return (
         <section id="experience" className="bg-[#0F0F0F] text-[#F5F5F0] min-h-screen px-6 sm:px-10 py-16">
             <div className="flex items-end justify-between pb-10 mb-12 border-b border-white/10">
@@ -140,7 +144,11 @@ export default function Experience() {
                                 <div className="grid grid-cols-1 gap-6 p-6 lg:grid-cols-[220px_1fr] sm:p-8">
                                     <div className="flex flex-col items-start gap-5">
                                         <div className="flex items-center justify-center w-full min-h-32 rounded-lg border border-white/10 bg-[#151515] p-5">
-                                            <img src={item.logo} alt={`${item.company} logo`} className="max-h-24 w-auto object-contain opacity-95" />
+                                            <img
+                                                src={typeof item.logo === 'string' ? item.logo : item.logo[theme]}
+                                                alt={`${item.company} logo`}
+                                                className="max-h-24 w-auto object-contain opacity-95"
+                                            />
                                         </div>
                                         <div>
                                             <p className="mb-2 text-xs font-semibold tracking-widest uppercase text-yellow-400">

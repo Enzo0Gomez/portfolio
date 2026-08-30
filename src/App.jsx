@@ -47,7 +47,7 @@ function App() {
       />
 
       <div className="flex-1">
-        <ActiveComponent setActiveSection={setActiveSection} />
+        <ActiveComponent setActiveSection={setActiveSection} theme={theme} />
       </div>
     </div>
   );
