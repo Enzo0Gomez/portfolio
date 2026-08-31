@@ -9,7 +9,7 @@ import setupImage from '../assets/pictures/my_internship/setup.png';
 import hardwareImage from '../assets/pictures/my_internship/Hardware_basic.png';
 import officeImage from '../assets/pictures/my_internship/office.png';
 import practiceVlan from '../assets/pictures/my_internship/practice_create_vlan.png';
-import noc from '../assets/pictures/my_internship/NOC.png';
+import noc from '../assets/pictures/my_internship/noc.png';
 import system from '../assets/pictures/my_internship/system_department.png';
 
 const galleryItems = [
