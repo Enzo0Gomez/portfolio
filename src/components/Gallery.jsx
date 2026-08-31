@@ -61,13 +61,13 @@ const galleryItems = [
         caption: 'Documentation and productivity enhancements used in daily support work.',
         image: officeImage,
     },
-      {
+    {
         title: 'system Department',
         category: 'System Department',
         caption: 'System department exposure, monitoring, and support activities.',
         image: system,
     },
-       {
+    {
         title: 'NOC',
         category: 'NOC Department',
         caption: 'Network Operations Center exposure, monitoring, and support activities.',
@@ -124,6 +124,7 @@ export default function Gallery() {
                             </figcaption>
                         </figure>
                     ))}
+
                 </div>
             </div>
         </section>
