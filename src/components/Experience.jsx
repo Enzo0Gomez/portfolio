@@ -30,6 +30,7 @@ const experiences = [
                 icon: faMobileScreenButton,
                 tags: [
                     { name: 'React Native', icon: faReact },
+                    { name: 'React.js', icon: faReact },
                     { name: 'TypeScript', icon: faCode },
                     { name: 'Figma to Code', icon: faLaptopCode },
                     { name: 'Responsive UI', icon: faMobileScreenButton },

@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase, faImages, faLayerGroup } from '@fortawesome/free-solid-svg-icons';
-import levelProject from '../assets/pictures/Project/WebProject_Level.png';
+import levelProject from '../assets/pictures/Project_DNA/Project_website_on_LEVEL.png';
 import ciscoImage from '../assets/pictures/my_internship/Cisco.png';
 import odooImage from '../assets/pictures/my_internship/odoo.png';
 import vlanImage from '../assets/pictures/my_internship/vlan.jpg';
@@ -11,6 +11,9 @@ import officeImage from '../assets/pictures/my_internship/office.png';
 import practiceVlan from '../assets/pictures/my_internship/practice_create_vlan.png';
 import noc from '../assets/pictures/my_internship/noc.png';
 import system from '../assets/pictures/my_internship/system_department.png';
+import inputRecruitmentUsingOdoo from '../assets/pictures/my_internship/input_recruitment_using_odoo.png';
+import packetPracticeSetup from '../assets/pictures/my_internship/packet_practice_setup.png';
+import replaceHardware from '../assets/pictures/my_internship/replace_hardware.jpg';
 
 const galleryItems = [
     {
@@ -38,6 +41,18 @@ const galleryItems = [
         image: odooImage,
     },
     {
+        title: 'Recruitment Input Using Odoo',
+        category: 'System Department',
+        caption: 'Encoded and managed recruitment information using Odoo workflows.',
+        image: inputRecruitmentUsingOdoo,
+    },
+    {
+        title: 'Packet Tracer Practice Setup',
+        category: 'Networking Practice',
+        caption: 'Built network topology practice setups for configuration and troubleshooting.',
+        image: packetPracticeSetup,
+    },
+    {
         title: 'System Setup',
         category: 'IT Support',
         caption: 'Device setup, troubleshooting, and operating system support.',
@@ -48,6 +63,12 @@ const galleryItems = [
         category: 'Technical Support',
         caption: 'Hardware diagnostics and maintenance fundamentals.',
         image: hardwareImage,
+    },
+    {
+        title: 'Hardware Replacement',
+        category: 'Technical Support',
+        caption: 'Assisted with hardware replacement, device checks, and support preparation.',
+        image: replaceHardware,
     },
     {
         title: 'Practice VLAN Configuration',

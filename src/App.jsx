@@ -8,6 +8,7 @@ import Certificates from './components/Certificates';
 import Contact from './components/Contact';
 import Skills from './components/Skills';
 import Gallery from './components/Gallery';
+import Projects from './components/Projects';
 
 const sections = {
   home: Home,
@@ -15,6 +16,7 @@ const sections = {
   experience: Experience,
   education: Education,
   skills: Skills,
+  projects: Projects,
   gallery: Gallery,
   certificates: Certificates,
   contact: Contact,
