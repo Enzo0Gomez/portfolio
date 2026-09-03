@@ -5,9 +5,11 @@ import comp from "../assets/certificate/ComputerHardware.pdf";
 import net from "../assets/certificate/NetworkingBasics.pdf";
 import python from "../assets/certificate/PythonEssentials1.pdf";
 import device from "../assets/certificate/NetworkingDevicesandBasic.pdf";
+import genAiSummit from "../assets/certificate/seminar/certificate-gen-ai-to-z-GAI2Z26-138A.pdf";
 import Swal from "sweetalert2";
 
 const certificates = [
+    { name: "Gen AI to Z: A Career Summit in an AI-Driven World", file: genAiSummit },
     { name: "Python Essentials 1", file: python },
     { name: "Networking Basics", file: net },
     { name: "Computer Hardware Basic", file: comp },
