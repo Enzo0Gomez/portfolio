@@ -9,7 +9,7 @@ import setupImage from '../assets/pictures/my_internship/setup.png';
 import hardwareImage from '../assets/pictures/my_internship/Hardware_basic.png';
 import officeImage from '../assets/pictures/my_internship/office.png';
 import practiceVlan from '../assets/pictures/my_internship/practice_create_vlan.png';
-import noc from '../assets/pictures/my_internship/noc.png';
+import noc from '../assets/pictures/my_internship/NOC.png';
 import system from '../assets/pictures/my_internship/system_department.png';
 import inputRecruitmentUsingOdoo from '../assets/pictures/my_internship/input_recruitment_using_odoo.png';
 import packetPracticeSetup from '../assets/pictures/my_internship/packet_practice_setup.png';
