@@ -15,6 +15,32 @@ function toggleDropdown() {
     if (dropdown) dropdown.classList.toggle('open');
 }
 
+function applyTheme(theme) {
+    const isDark = theme === 'dark';
+    document.body.classList.toggle('dark-mode', isDark);
+    document.documentElement.classList.toggle('dark-mode', isDark);
+
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        themeToggle.setAttribute('aria-pressed', String(isDark));
+        themeToggle.innerHTML = isDark
+            ? '<i class="fas fa-sun w-4"></i> Light Mode'
+            : '<i class="fas fa-moon w-4"></i> Dark Mode';
+    }
+}
+
+function toggleTheme() {
+    const currentTheme = localStorage.getItem('internship-theme') || 'light';
+    const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('internship-theme', nextTheme);
+    applyTheme(nextTheme);
+
+    const mentorFrame = document.getElementById('mentor-iframe');
+    if (mentorFrame && mentorFrame.contentWindow) {
+        mentorFrame.contentWindow.postMessage({ type: 'internship-theme', theme: nextTheme }, window.location.origin);
+    }
+}
+
 function showSlide(carouselId, index) {
     const carousel = document.getElementById(carouselId);
     if (!carousel || !carousel.children.length) return;
@@ -35,6 +61,8 @@ function prevSlide(carouselId) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+    applyTheme(localStorage.getItem('internship-theme') || 'light');
+
     const dropdown = document.getElementById('mentorDropdown');
 
     document.addEventListener('click', function (e) {
@@ -59,5 +87,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }, { threshold: 0.4 });
 
         sections.forEach(s => observer.observe(s));
+    }
+});
+
+window.addEventListener('message', function (event) {
+    if (event.origin !== window.location.origin) return;
+    if (event.data && event.data.type === 'internship-theme') {
+        localStorage.setItem('internship-theme', event.data.theme);
+        applyTheme(event.data.theme);
     }
 });

@@ -5,11 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mentor Profile</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="script/script.js"></script>
+    <script src="script/script.js" defer></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="bg-gray-50 font-sans min-h-screen p-6">
     <div class="max-w-5xl mx-auto space-y-4">
+        <button id="themeToggle" onclick="toggleTheme()"
+            class="theme-toggle inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold transition"
+            type="button" aria-pressed="false">
+            <i class="fas fa-moon w-4"></i> Dark Mode
+        </button>
         <div class="bg-white rounded-2xl border border-gray-200 p-5">
             <div class="flex items-center gap-4 mb-5">
                 <div>
