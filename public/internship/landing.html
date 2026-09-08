@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dan Raizen Gomez | OJT Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script/script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        #mentor-frame-section {
+            display: none;
+        }
+        
+        #mentor-frame-section.active {
+            display: block;
+        }
+        
+        #mentor-iframe {
+            width: 100%;
+            height: 100vh;
+            border: none;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <nav class="fixed top-0 left-0 h-screen w-52 bg-white shadow-lg z-50 flex flex-col">
+        <div class="px-6 py-6 flex flex-col items-start space-y-5 flex-1 overflow-y-auto">
+            <div class="flex items-center space-x-3">
+                <img src="picture/BlackFiber_Logo-removebg-preview.png" alt="Logo" class="w-12 h-12 rounded-full shadow-md object-cover" onerror="this.style.display='none'">
+                <h1 class="text-lg font-bold text-black leading-tight">My OJT<br>Report</h1>
+            </div>
+            <div class="flex flex-col space-y-3 text-sm font-medium w-full">
+
+                <a href="#home" onclick="closeMentor()" class="nav-link text-gray-600 hover:text-yellow-600 transition flex items-center gap-2">
+                    <i class="fas fa-house w-4"></i> Home
+                </a>
+                <a href="#experience" onclick="closeMentor()" class="nav-link text-gray-600 hover:text-yellow-600 transition flex items-center gap-2">
+                    <i class="fas fa-briefcase w-4"></i> Experience
+                </a>
+                <div class="dropdown" id="mentorDropdown">
+                    <button class="dropbtn" onclick="toggleDropdown()">
+                        <i class="fas fa-chalkboard-teacher w-4"></i>
+                        Mentors
+                        <i class="fas fa-chevron-down chevron"></i>
+                    </button>
+                    <div class="dropdown-content p-2 bg-white shadow-md rounded-md">
+                        <h4 class="font-semibold text-gray-800 mb-1">System</h4>
+                        <a href="#" onclick="openMentor('gelina-robiso.html', 'Gelina Robiso'); return false;" class="block text-gray-700 hover:text-yellow-600 transition">Gelina Robiso</a>
+                        <a href="#" onclick="openMentor('joseph-adrian-mejoy.html', 'Joseph Adrian Mejoy'); return false;" class="block text-gray-700 hover:text-yellow-600 transition">Joseph Adrian Mejoy</a>
+                        <a href="#" onclick="openMentor('jhorene-dela-cruz.html', 'Jhorene Dela Cruz'); return false;" class="block text-gray-700 hover:text-yellow-600 transition">Jhorene Dela Cruz</a>
+                        <h4 class="font-semibold text-gray-800 mt-4 mb-2">NOC</h4>
+                        <a href="#" onclick="openMentor('clark-steven-arcilla.html', 'Clark Steven Arcilla'); return false;" class="block text-gray-700 hover:text-yellow-600 transition">Clark Steven Arcilla</a>
+                        <a href="#" onclick="openMentor('reynaldo-salibay.html', 'Reynaldo Salibay'); return false;" class="block text-gray-700 hover:text-yellow-600 transition">Reynaldo Salibay</a>
+                        <a href="#" onclick="openMentor('romel-esquejo.html', 'Romel Esquejo'); return false;" class="block text-gray-700 hover:text-yellow-600 transition">Romel Esquejo</a>
+
+                    </div>
+                </div>
+                <a href="#certificates" onclick="closeMentor()" class="nav-link text-gray-600 hover:text-yellow-600 transition flex items-center gap-2">
+                    <i class="fas fa-certificate w-4"></i> Certificates
+                </a>
+                <a href="../" class="portfolio-link inline-flex items-center justify-center gap-2 px-3 py-2 text-sm font-semibold transition">
+                    <i class="fas fa-arrow-left w-4"></i> Back to Portfolio
+                </a>
+            </div>
+        </div>
+        <p class="px-6 py-4 text-xs text-gray-400">Black Fiber OJT © 2026</p>
+    </nav>
+    <main class="ml-52">
+        <section id="mentor-frame-section">
+            <div class="bg-white px-6 py-3 border-b border-gray-200 flex items-center gap-3 sticky top-0 z-10 shadow-sm">
+                <button onclick="closeMentor()" class="flex items-center gap-2 text-sm font-semibold text-gray-600 hover:text-yellow-600 transition">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <span class="text-gray-300">|</span>
+                <span id="mentor-label" class="text-sm text-gray-500">Mentor Profile</span>
+            </div>
+            <iframe id="mentor-iframe" src="" title="Mentor Profile"></iframe>
+        </section>
+        <div id="main-content">
+            <section id="home">
+                <div class="relative bg-cover bg-center text-white min-h-screen flex items-center" style="background-image: url('picture/shared image.jpg');">
+                    <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/25"></div>
+                    <div class="hero-panel relative ml-8 rounded-r-2xl px-8 py-10 md:px-12 md:py-14">
+                        <p class="hero-kicker mb-5">
+                            <i class="fas fa-briefcase"></i> OJT Final Report
+                        </p>
+                        <h2 class="text-4xl md:text-6xl font-black mb-6 leading-tight tracking-tight">Dan Raizen Gomez</h2>
+                        <p class="text-lg text-gray-100 leading-8 max-w-2xl">
+                            A visual summary of my internship journey at Black Fiber, covering practical work in networking, systems support, Odoo workflows, troubleshooting, and mentorship.
+                        </p>
+                        <div class="mt-8 flex flex-wrap gap-3">
+                            <a href="#experience" class="inline-flex items-center gap-2 rounded-lg bg-yellow-400 px-5 py-3 text-sm font-bold text-black transition hover:bg-yellow-300">
+                                <i class="fas fa-arrow-down"></i> View Experience
+                            </a>
+                            <a href="#mentors" class="inline-flex items-center gap-2 rounded-lg border border-white/30 px-5 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-black">
+                                <i class="fas fa-users"></i> Meet Mentors
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="bg-gray-50 px-10 py-8">
+                <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+                    <div class="quick-stat">
+                        <p class="text-xs font-bold uppercase tracking-widest text-yellow-600">Departments</p>
+                        <p class="mt-2 text-3xl font-black text-gray-900">2</p>
+                        <p class="text-sm text-gray-500">NOC and System</p>
+                    </div>
+                    <div class="quick-stat">
+                        <p class="text-xs font-bold uppercase tracking-widest text-yellow-600">Mentors</p>
+                        <p class="mt-2 text-3xl font-black text-gray-900">6</p>
+                        <p class="text-sm text-gray-500">Guided training support</p>
+                    </div>
+                    <div class="quick-stat">
+                        <p class="text-xs font-bold uppercase tracking-widest text-yellow-600">Focus</p>
+                        <p class="mt-2 text-3xl font-black text-gray-900">IT</p>
+                        <p class="text-sm text-gray-500">Networking and systems</p>
+                    </div>
+                </div>
+            </section>
+            <section id="experience" class="bg-white px-10 py-16">
+                <div class="section-heading">
+                    <div>
+                        <p class="text-xs font-bold uppercase tracking-widest text-yellow-600">Training highlights</p>
+                        <h3 class="mt-2 text-3xl font-black text-gray-900">Experience in My OJT Journey</h3>
+                    </div>
+                    <p class="max-w-xl text-sm leading-6 text-gray-500">Skills and knowledge gained during hands-on training at Black Fiber.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8
+                      bg-no-repeat bg-right bg-[length:300px] bg-contain
+                      bg-[url('picture/BlackFiber_Logo-removebg-preview.png')]">
+                    <div class="experience-card flex flex-col">
+                        <div class="p-6 flex-1">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center">
+                                    <i class="fas fa-network-wired text-yellow-600"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold">NOC Department</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                I gained hands-on experience in the networking field by configuring VLANs, troubleshooting devices, and working with network tools like Cisco Packet Tracer. I developed practical skills in cable management, IP addressing, and basic network setup, which
+                                helped me understand real-world networking operations.
+                            </p>
+                        </div>
+                        <div class="relative overflow-hidden bg-gray-200">
+                            <div id="carousel1" class="carousel-track" data-index="0">
+                                <img src="picture/Ip.png" alt="NOC Photo 1" class="w-full flex-shrink-0 object-cover max-h-[180px]" onerror="this.style.display='none'">
+                                <img src="picture/rj.png" alt="NOC Photo 2" class="w-full flex-shrink-0 object-cover max-h-[180px]" onerror="this.style.display='none'">
+                                <img src="picture/packet.png" alt="NOC Photo 3" class="w-full flex-shrink-0 object-cover max-h-[180px]" onerror="this.style.display='none'">
+                            </div>
+                            <button onclick="prevSlide('carousel1')" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-40 hover:bg-opacity-70 text-white rounded-full w-8 h-8 flex items-center justify-center transition">
+                                <i class="fas fa-chevron-left text-xs"></i>
+                            </button>
+                            <button onclick="nextSlide('carousel1')" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-40 hover:bg-opacity-70 text-white rounded-full w-8 h-8 flex items-center justify-center transition">
+                                <i class="fas fa-chevron-right text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="experience-card flex flex-col">
+                        <div class="p-6 flex-1">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center">
+                                    <i class="fas fa-desktop text-yellow-600"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold">System Department</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                I gained experience in systems and Odoo by managing data, configuring modules, and understanding business workflows used in the company. I also developed programming knowledge by studying Python and TypeScript. I performed troubleshooting, device setup,
+                                and maintenance, which improved my problem-solving skills.
+                            </p>
+                        </div>
+                        <div class="relative overflow-hidden bg-gray-200">
+                            <div id="carousel2" class="carousel-track" data-index="0">
+                                <img src="picture/Media (1).jpg" alt="System Photo 1" class="w-full flex-shrink-0 object-cover max-h-[180px]" onerror="this.style.display='none'">
+                                <img src="picture/toggle.png" alt="System Photo 2" class="w-full flex-shrink-0 object-cover max-h-[180px]" onerror="this.style.display='none'">
+                                <img src="picture/office1.png" alt="System Photo 3" class="w-full flex-shrink-0 object-cover max-h-[180px]" onerror="this.style.display='none'">
+                                <img src="picture/Cisco.png" alt="System Photo 4" class="w-full flex-shrink-0 object-cover max-h-[180px]" onerror="this.style.display='none'">
+                            </div>
+                            <button onclick="prevSlide('carousel2')" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-40 hover:bg-opacity-70 text-white rounded-full w-8 h-8 flex items-center justify-center transition">
+                                <i class="fas fa-chevron-left text-xs"></i>
+                            </button>
+                            <button onclick="nextSlide('carousel2')" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-40 hover:bg-opacity-70 text-white rounded-full w-8 h-8 flex items-center justify-center transition">
+                                <i class="fas fa-chevron-right text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="certificates" class="bg-gray-50 px-10 py-16">
+                <div class="section-heading">
+                    <div>
+                        <p class="text-xs font-bold uppercase tracking-widest text-yellow-600">Proof of learning</p>
+                        <h3 class="mt-2 text-3xl font-black text-gray-900">Certificates</h3>
+                    </div>
+                    <p class="max-w-xl text-sm leading-6 text-gray-500">Certifications and recognitions earned during my OJT.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="certificate-card">
+                        <img src="picture/Network.png" alt=""></i>
+                    </div>
+                    <div class="certificate-card">
+                        <img src="picture/Network_basic.png" alt=""></i>
+                    </div>
+                    <div class="certificate-card">
+                        <img src="picture/essentials.png" alt=""></i>
+                    </div>
+                </div>
+            </section>
+            <section id="mentors" class="bg-white px-10 py-16">
+                <div class="section-heading">
+                    <div>
+                        <p class="text-xs font-bold uppercase tracking-widest text-yellow-600">Guidance</p>
+                        <h3 class="mt-2 text-3xl font-black text-gray-900">My Mentors</h3>
+                    </div>
+                    <p class="max-w-xl text-sm leading-6 text-gray-500">People who guided me throughout my OJT journey.</p>
+                </div>
+                <div class="mb-10">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center">
+                            <i class="fas fa-desktop text-yellow-600 text-sm"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold text-gray-700">System Department</h4>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div onclick="openMentor('gelina-robiso.html', 'Gelina Robiso')" class="mentor-card bg-black text-white rounded-xl px-5 py-4 cursor-pointer shadow-sm hover:bg-yellow-500 hover:text-black transition">
+                            <p class="font-semibold">Gelina Robiso</p>
+                            <p class="text-xs text-gray-400 mt-1">System Mentor</p>
+                        </div>
+                        <div onclick="openMentor('jhorene-dela-cruz.html', 'Jhorene Dela Cruz')" class="mentor-card bg-black text-white rounded-xl px-5 py-4 cursor-pointer shadow-sm hover:bg-yellow-500 hover:text-black transition">
+                            <p class="font-semibold">Jhorene Dela Cruz</p>
+                            <p class="text-xs text-gray-400 mt-1">System Mentor</p>
+                        </div>
+                        <div onclick="openMentor('joseph-adrian-mejoy.html', 'Joseph Adrian Mejoy')" class="mentor-card bg-black text-white rounded-xl px-5 py-4 cursor-pointer shadow-sm hover:bg-yellow-500 hover:text-black transition">
+                            <p class="font-semibold">Joseph Adrian Mejoy</p>
+                            <p class="text-xs text-gray-400 mt-1">System Mentor</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center">
+                            <i class="fas fa-network-wired text-yellow-600 text-sm"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold text-gray-700">NOC Department</h4>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div onclick="openMentor('clark-steven-arcilla.html', 'Clark Steven Arcilla')" class="mentor-card bg-black text-white rounded-xl px-5 py-4 cursor-pointer shadow-sm hover:bg-yellow-500 hover:text-black transition">
+                            <p class="font-semibold">Clark Steven Arcilla</p>
+                            <p class="text-xs text-gray-400 mt-1">NOC Mentor</p>
+                        </div>
+                        <div onclick="openMentor('reynaldo-salibay.html', 'Reynaldo Salibay')" class="mentor-card bg-black text-white rounded-xl px-5 py-4 cursor-pointer shadow-sm hover:bg-yellow-500 hover:text-black transition">
+                            <p class="font-semibold">Reynaldo Salibay</p>
+                            <p class="text-xs text-gray-400 mt-1">NOC Mentor</p>
+                        </div>
+                        <div onclick="openMentor('romel-esquejo.html', 'Romel Esquejo')" class="mentor-card bg-black text-white rounded-xl px-5 py-4 cursor-pointer shadow-sm hover:bg-yellow-500 hover:text-black transition">
+                            <p class="font-semibold">Romel Esquejo</p>
+                            <p class="text-xs text-gray-400 mt-1">NOC Mentor</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+</body>
+
+</html>

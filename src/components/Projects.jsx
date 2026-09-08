@@ -12,6 +12,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faReact } from '@fortawesome/free-brands-svg-icons';
 import levelProject from '../assets/pictures/Project_DNA/Project_website_on_LEVEL.png';
+import internshipProject from '../assets/pictures/my_internship/shared image.jpg';
 
 
 const projects = [
@@ -24,6 +25,18 @@ const projects = [
             { label: 'React.js', icon: faReact },
             { label: 'Frontend UI', icon: faMobileScreenButton },
             { label: 'APIs', icon: faServer },
+        ],
+    },
+    {
+        title: 'OJT Internship Report',
+        category: 'Internship',
+        image: internshipProject,
+        summary: 'A static internship report for my Black Fiber OJT experience, including department work, mentors, certificates, and training highlights.',
+        link: `${import.meta.env.BASE_URL}internship/index.html`,
+        tags: [
+            { label: 'HTML', icon: faCode },
+            { label: 'Networking', icon: faNetworkWired },
+            { label: 'Systems', icon: faDatabase },
         ],
     },
 ];
@@ -83,6 +96,15 @@ export default function Projects() {
                                         </span>
                                     ))}
                                 </div>
+                                {project.link && (
+                                    <a
+                                        href={project.link}
+                                        className="mt-6 inline-flex items-center gap-2 rounded-md bg-yellow-400 px-4 py-2 text-sm font-semibold text-black transition hover:bg-yellow-300"
+                                    >
+                                        <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="w-3" />
+                                        Open report
+                                    </a>
+                                )}
                             </div>
                         </article>
                     ))}

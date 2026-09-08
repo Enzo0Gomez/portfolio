@@ -1,0 +1,42 @@
+<nav class="fixed top-0 left-0 h-screen w-52 bg-white shadow-lg z-50 flex flex-col">
+    <div class="px-6 py-6 flex flex-col items-start space-y-5 flex-1 overflow-y-auto">
+        <div class="flex items-center space-x-3">
+            <img src="picture/BlackFiber_Logo-removebg-preview.png" alt="Logo" class="w-12 h-12 rounded-full shadow-md object-cover" onerror="this.style.display='none'">
+            <h1 class="text-lg font-bold text-black leading-tight">My OJT<br>Report</h1>
+        </div>
+        <div class="flex flex-col space-y-3 text-sm font-medium w-full">
+
+            <a href="landing.html" class="nav-link text-gray-600 hover:text-yellow-600 transition flex items-center gap-2">
+                <i class="fas fa-house w-4"></i> Home
+            </a>
+            <a href="#experience" class="nav-link text-gray-600 hover:text-yellow-600 transition flex items-center gap-2">
+                <i class="fas fa-briefcase w-4"></i> Experience
+            </a>
+            <div class="dropdown" id="mentorDropdown">
+                <button class="dropbtn" onclick="toggleDropdown()">
+                    <i class="fas fa-chalkboard-teacher w-4"></i>
+                    Mentor's
+                    <i class="fas fa-chevron-down chevron"></i>
+                </button>
+                <div class="dropdown-content p-2 bg-white shadow-md rounded-md">
+                    <h4 class="font-semibold text-gray-800 mb-1">System</h4>
+                    <a href="gelina-robiso.html" target="_blank" class="block text-gray-700 hover:text-yellow-600 transition">Gelina Robiso</a>
+                    <a href="jhorene-dela-cruz.html" target="_blank" class="block text-gray-700 hover:text-yellow-600 transition">Jhorene Dela Cruz</a>
+                    <a href="joseph-adrian-mejoy.html" target="_blank" class="block text-gray-700 hover:text-yellow-600 transition">Joseph Adrian Mejoy</a>
+                    <h4 class="font-semibold text-gray-800 mt-4 mb-2">NOC</h4>
+                    <a href="reynaldo-salibay.html" target="_blank" class="block text-gray-700 hover:text-yellow-600 transition">Reynaldo Salibay</a>
+                    <a href="romel-esquejo.html" target="_blank" class="block text-gray-700 hover:text-yellow-600 transition">Romel Esquejo</a>
+                    <a href="clark-steven-arcilla.html" target="_blank" class="block text-gray-700 hover:text-yellow-600 transition">Clark Steven Arcilla</a>
+                </div>
+
+            </div>
+            <a href="#certificates" class="nav-link text-gray-600 hover:text-yellow-600 transition flex items-center gap-2">
+                <i class="fas fa-certificate w-4"></i> Certificates
+            </a>
+            <a href="../" class="portfolio-link inline-flex items-center justify-center gap-2 px-3 py-2 text-sm font-semibold transition">
+                <i class="fas fa-arrow-left w-4"></i> Back to Portfolio
+            </a>
+        </div>
+    </div>
+    <p class="px-6 py-4 text-xs text-gray-400">Black Fiber OJT © 2025</p>
+</nav>
