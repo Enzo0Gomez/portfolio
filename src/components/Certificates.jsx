@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCertificate, faEye, faFilePdf } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUpRightFromSquare, faCertificate, faEye, faFilePdf } from "@fortawesome/free-solid-svg-icons";
 import comp from "../assets/certificate/ComputerHardware.pdf";
 import net from "../assets/certificate/NetworkingBasics.pdf";
 import python from "../assets/certificate/PythonEssentials1.pdf";
@@ -40,52 +40,59 @@ export default function Certificates() {
     };
 
     return (
-        <div
-            id="certificates"
-            className="bg-[#0F0F0F] text-[#F5F5F0] min-h-screen  px-10"
-        >
-            <div className="flex items-start justify-between pb-10 border-b mb-14 border-white/10">
-                <div className="mt-5">
-                    <h2 className="font-['Space_Grotesk'] text-6xl font-bold leading-none">
-                        <FontAwesomeIcon icon={faCertificate} className="mr-4 text-yellow-400" />
-                        Certificates
-                    </h2>
+        <section id="certificates" className="min-h-screen bg-[#0F0F0F] px-6 py-16 text-[#F5F5F0] sm:px-10">
+            <div className="mx-auto max-w-7xl">
+                <div className="mb-12 flex flex-col gap-4 border-b border-white/10 pb-8 sm:flex-row sm:items-end sm:justify-between">
+                    <div>
+                        <p className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-yellow-400">
+                            <FontAwesomeIcon icon={faCertificate} /> Proof of learning
+                        </p>
+                        <h2 className="font-['Space_Grotesk'] text-4xl font-bold leading-none sm:text-5xl md:text-6xl">
+                            Certificates
+                        </h2>
+                    </div>
+                    <p className="max-w-sm text-sm leading-6 text-white/50">
+                        A collection of certifications and seminars that supported my growth in technology.
+                    </p>
                 </div>
-            </div>
 
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
+                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
                 {certificates.map((cert, index) => (
                     <div
                         key={index}
-                        className="border border-white/15 bg-[#1a1a1a] rounded-xl overflow-hidden"
+                        className="group overflow-hidden rounded-2xl border border-white/10 bg-[#151515] shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/50"
                     >
-                        <iframe
-                            src={cert.file}
-                            title={cert.name}
-                            className="w-full h-48 border-none bg-[#111]"
-                        ></iframe>
+                        <div className="relative aspect-[16/10] overflow-hidden bg-[#0a0a0a]">
+                            <iframe src={cert.file} title={cert.name} className="h-full w-full border-none bg-[#111]" loading="lazy" />
+                            <span className="absolute left-3 top-3 rounded-full border border-yellow-400/30 bg-black/70 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-yellow-400">
+                                {String(index + 1).padStart(2, "0")}
+                            </span>
+                        </div>
 
-                        <div className="p-5">
-                            <p className="text-[11px] font-medium text-gray-400 uppercase tracking-widest mb-4">
-                                <FontAwesomeIcon icon={faFilePdf} className="mr-2 text-yellow-400" />
-                                {cert.name}
+                        <div className="flex min-h-36 flex-col p-5">
+                            <p className="mb-5 flex items-start gap-2 text-sm font-semibold leading-5 text-white/85">
+                                <FontAwesomeIcon icon={faFilePdf} className="mt-0.5 shrink-0 text-yellow-400" />
+                                <span>{cert.name}</span>
                             </p>
 
-                            <div className="flex gap-3">
+                            <div className="mt-auto flex gap-2">
                                 <button
                                     onClick={() => openViewer(cert)}
                                     aria-label={`View ${cert.name}`}
-                                    className="inline-flex items-center justify-center flex-1 gap-2 py-2 text-xs text-gray-300 transition border rounded-lg border-white/20 hover:bg-white/5"
+                                    className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg border border-white/15 bg-white/[0.03] py-2.5 text-xs font-semibold text-white/70 transition hover:border-yellow-400/50 hover:bg-yellow-400 hover:text-black"
                                 >
                                     <FontAwesomeIcon icon={faEye} />
                                     View
                                 </button>
-                              
+                                <a href={cert.file} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center rounded-lg border border-white/15 px-3 text-white/50 transition hover:border-yellow-400/50 hover:text-yellow-400" aria-label={`Open ${cert.name} in a new tab`}>
+                                    <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="text-xs" />
+                                </a>
                             </div>
                         </div>
                     </div>
                 ))}
+                </div>
             </div>
-        </div>
+        </section>
     );
 }

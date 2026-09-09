@@ -81,10 +81,13 @@ const Skills = () => {
     >
       <div className="mx-auto max-w-7xl">
         {/* Header */}
-        <div className="flex items-baseline justify-between pb-6 mb-12 border-b border-white/10">
-          <h1 className="font-['Space_Grotesk'] text-4xl sm:text-5xl md:text-6xl font-bold leading-none tracking-tight">
+        <div className="mb-12 flex flex-col gap-3 border-b border-white/10 pb-8 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-yellow-400">What I work with</p>
+          <h1 className="font-['Space_Grotesk'] text-4xl font-bold leading-none tracking-tight sm:text-5xl md:text-6xl">
             Skills
           </h1>
+          </div>
           <span className="hidden font-mono text-xs tracking-widest uppercase sm:block text-white/40">
             Stack &amp; tools
           </span>
@@ -95,7 +98,7 @@ const Skills = () => {
           {skillGroups.map((group) => (
             <div
               key={group.title}
-              className={`relative flex flex-col gap-6 p-8 overflow-hidden transition-colors bg-[#0F0F0F]  hover:border-yellow-400/40 sm:p-10`}
+              className={`relative flex flex-col gap-5 overflow-hidden bg-[#0F0F0F] p-5 transition-colors hover:border-yellow-400/40 sm:p-7`}
             >
               {/* Soft accent glow */}
               <div

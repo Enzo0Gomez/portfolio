@@ -51,7 +51,7 @@ const Sidebar = ({ activeSection, setActiveSection, theme, toggleTheme }) => {
         }
       `}</style>
 
-      <div className="flex items-center justify-between px-6 py-4 bg-yellow-400 shadow-sm md:hidden">
+      <div className="sticky top-0 z-50 flex items-center justify-between px-4 py-3 bg-yellow-400 shadow-sm sm:px-6 md:hidden">
         <a
           href="#home"
           onClick={(e) => handleNavClick(e, "#home")}
@@ -70,8 +70,9 @@ const Sidebar = ({ activeSection, setActiveSection, theme, toggleTheme }) => {
           </button>
           <button
             onClick={() => setOpen(!open)}
-            className="p-2 text-black transition-transform duration-200 active:scale-90"
+            className="flex h-10 w-10 items-center justify-center rounded-md p-2 text-black transition-colors duration-200 hover:bg-black/10 active:scale-90"
             aria-label="Toggle menu"
+            aria-expanded={open}
           >
             <FontAwesomeIcon icon={open ? faXmark : faBars} className="text-2xl" />
           </button>
@@ -79,11 +80,11 @@ const Sidebar = ({ activeSection, setActiveSection, theme, toggleTheme }) => {
       </div>
 
       <div
-        className={`overflow-hidden bg-yellow-400 transition-all duration-300 ease-in-out md:hidden ${
-          open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        className={`relative z-40 overflow-y-auto bg-yellow-400 transition-all duration-300 ease-in-out md:hidden ${
+          open ? "max-h-[calc(100vh-4rem)] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="flex flex-col gap-1 px-6 py-2">
+        <div className="flex flex-col gap-1 px-4 py-2 sm:px-6">
           {navLinks.map((link, i) => (
             <a
               key={link.href}
@@ -105,22 +106,22 @@ const Sidebar = ({ activeSection, setActiveSection, theme, toggleTheme }) => {
         </div>
       </div>
 
-      <nav className="sticky top-0 hidden h-screen bg-yellow-400 shadow-sm md:flex md:flex-col md:w-56">
+      <nav className="sticky top-0 z-50 hidden w-full bg-yellow-400 shadow-sm md:flex md:flex-row md:items-center">
         <a
           href="#home"
           onClick={(e) => handleNavClick(e, "#home")}
-          className="px-6 py-6 text-xl font-extrabold tracking-tight text-black transition-transform duration-200 hover:scale-105"
+          className="shrink-0 px-4 py-3 text-lg font-extrabold tracking-tight text-black transition-transform duration-200 hover:scale-105"
         >
           DRG
         </a>
 
-        <div className="flex flex-col gap-1 px-3">
+        <div className="flex min-w-0 flex-1 flex-row flex-wrap justify-center gap-1 px-2">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              className={`relative border-l-4 px-4 py-3 text-sm font-medium rounded-md transition-all duration-300 ease-in-out hover:translate-x-1 ${
+              className={`relative border-l-4 px-2.5 py-2 text-xs font-medium rounded-md transition-all duration-300 ease-in-out hover:translate-x-1 ${
                 isActive(link.href)
                   ? "border-black bg-black/10 text-black"
                   : "border-transparent text-black/80 hover:text-black hover:bg-black/10"
@@ -134,10 +135,10 @@ const Sidebar = ({ activeSection, setActiveSection, theme, toggleTheme }) => {
           ))}
         </div>
 
-        <div className="mt-auto px-3 pb-5">
+        <div className="ml-auto shrink-0 px-2 py-2">
           <button
             onClick={toggleTheme}
-            className="flex w-full items-center justify-between rounded-md border border-black/15 bg-black/10 px-4 py-3 text-sm font-semibold text-black transition-all duration-200 hover:bg-black hover:text-yellow-400"
+            className="flex w-full items-center justify-between rounded-md border border-black/15 bg-black/10 px-3 py-2 text-xs font-semibold text-black transition-all duration-200 hover:bg-black hover:text-yellow-400"
             aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
           >
             <span className="inline-flex items-center gap-3">

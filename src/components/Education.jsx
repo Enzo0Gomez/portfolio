@@ -26,24 +26,24 @@ const education = [
 
 export default function Education() {
     return (
-        <div id="education" className="bg-[#0F0F0F] text-[#F5F5F0] min-h-screen px-10 py-10 ">
+        <section id="education" className="min-h-screen bg-[#0F0F0F] px-6 py-16 text-[#F5F5F0] sm:px-10">
+            <div className="mx-auto max-w-7xl">
 
-            <div className="flex items-end justify-between pb-10 mb-10 border-b border-white/10">
+            <div className="mb-12 flex flex-col gap-3 border-b border-white/10 pb-8 sm:flex-row sm:items-end sm:justify-between">
                 <div>
-
-                    <h1 className="font-['Space_Grotesk'] text-6xl font-bold leading-none">
-                        <FontAwesomeIcon icon={faGraduationCap} className="mr-4 text-yellow-400" />
+                    <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-yellow-400">Academic background</p>
+                    <h1 className="font-['Space_Grotesk'] text-4xl font-bold leading-none sm:text-5xl md:text-6xl">
                         Education
                     </h1>
                 </div>
 
             </div>
-            <div className=''>
+            <div>
                 <div className="flex flex-col gap-6 ">
                     {education.map((item, index) => (
                         <div
                             key={index}
-                            className="border border-white/10 hover:border-yellow-400/40 rounded-2xl p-6 transition-all duration-300 bg-white/[0.02]"
+                            className="rounded-2xl border border-white/10 bg-white/[0.02] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 sm:p-7"
                         >
                             <div className="flex flex-wrap items-start justify-between gap-6">
                                 <div className="flex-1 min-w-[260px]">
@@ -104,7 +104,7 @@ export default function Education() {
                     {education.map((item, index) => (
                         <div
                             key={index}
-                            className="border border-white/10 hover:border-yellow-400/40 rounded-2xl p-6 transition-all duration-300 bg-white/[0.02]"
+                            className="rounded-2xl border border-white/10 bg-white/[0.02] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 sm:p-7"
                         >
                             <div className="flex flex-wrap items-start justify-between gap-6">
                                 <div className="flex-1 min-w-[260px]">
@@ -129,6 +129,7 @@ export default function Education() {
                     ))}
                 </div>
             </div>
-        </div>
+            </div>
+        </section>
     );
 }

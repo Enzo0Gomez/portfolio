@@ -82,10 +82,12 @@ export default function Contact() {
     }
 
     return (
-        <div id="contact" className="bg-[#0F0F0F] text-[#F5F5F0] min-h-screen px-6 sm:px-10 py-16">
+        <section id="contact" className="min-h-screen bg-[#0F0F0F] px-6 py-16 text-[#F5F5F0] sm:px-10">
+            <div className="mx-auto max-w-7xl">
 
-            <div className="flex items-start justify-between pb-10 border-b mb-14 border-white/10">
+            <div className="mb-12 flex flex-col gap-3 border-b border-white/10 pb-8 sm:flex-row sm:items-end sm:justify-between">
                 <div>
+                    <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-yellow-400">Let’s connect</p>
                     <h1 className="font-['Space_Grotesk'] text-4xl sm:text-5xl md:text-6xl font-bold leading-none">
                         Contact
                     </h1>
@@ -129,7 +131,7 @@ export default function Contact() {
 
             </div>
 
-            <div className="max-w-2xl mx-auto mt-16">
+            <div className="mx-auto mt-14 max-w-3xl rounded-2xl border border-white/10 bg-white/[0.02] p-5 sm:p-8">
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <fieldset disabled={status === 'sending'} aria-busy={status === 'sending'} className="space-y-6 disabled:opacity-50">
 
@@ -196,6 +198,7 @@ export default function Contact() {
                     </fieldset>
                 </form>
             </div>
-        </div>
+            </div>
+        </section>
     );
 }

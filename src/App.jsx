@@ -40,7 +40,7 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col App md:flex-row">
+    <div className="flex flex-col App">
       <Sidebar
         activeSection={activeSection}
         setActiveSection={setActiveSection}
