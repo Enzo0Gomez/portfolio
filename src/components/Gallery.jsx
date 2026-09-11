@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase, faImages, faLayerGroup } from '@fortawesome/free-solid-svg-icons';
 import levelProject from '../assets/pictures/Project_DNA/Project_website_on_LEVEL.png';
@@ -97,6 +97,21 @@ const galleryItems = [
 ];
 
 export default function Gallery() {
+    const [scrollProgress, setScrollProgress] = useState(0);
+    const galleryRef = useRef(null);
+    const scrollContainerRef = useRef(null);
+
+    const scrollToItem = (index) => {
+        galleryRef.current?.children[index]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    };
+
+    const handleScroll = () => {
+        const gallery = scrollContainerRef.current;
+        if (!gallery) return;
+        const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+        setScrollProgress(maxScroll > 0 ? (gallery.scrollLeft / maxScroll) * 100 : 0);
+    };
+
     return (
         <section id="gallery" className="min-h-screen bg-[#0F0F0F] px-6 py-16 text-[#F5F5F0] sm:px-10">
             <div className="mx-auto max-w-7xl">
@@ -116,36 +131,20 @@ export default function Gallery() {
                     </span>
                 </div>
 
-                <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
-                    {galleryItems.map((item, index) => (
-                        <figure
-                            key={item.title}
-                            className={`group overflow-hidden rounded-xl border border-white/10 bg-white/[0.02] transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 ${index === 0 ? 'md:col-span-2' : ''
-                                }`}
-                        >
-                            <div className={`${index === 0 ? 'aspect-[16/9]' : 'aspect-[4/3]'} overflow-hidden bg-[#151515]`}>
-                                <img
-                                    src={item.image}
-                                    alt={item.title}
-                                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                    loading="lazy"
-                                />
-                            </div>
-                            <figcaption className="p-5">
-                                <p className="mb-3 inline-flex items-center gap-2 rounded-full bg-yellow-400/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-yellow-400">
-                                    <FontAwesomeIcon icon={faLayerGroup} />
-                                    {item.category}
-                                </p>
-                                <h2 className="font-['Space_Grotesk'] mb-2 text-xl font-bold text-white">
-                                    {item.title}
-                                </h2>
-                                <p className="text-sm leading-7 text-white/60">
-                                    {item.caption}
-                                </p>
-                            </figcaption>
-                        </figure>
-                    ))}
-
+                <div ref={scrollContainerRef} className="-mx-6 overflow-x-auto px-6 pb-2 sm:-mx-10 sm:px-10 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" onScroll={handleScroll} aria-label="Experience photos">
+                    <div ref={galleryRef} className="flex snap-x snap-mandatory gap-5">
+                        {galleryItems.map((item) => (
+                            <figure key={item.title} className="group w-[min(82vw,360px)] shrink-0 snap-start overflow-hidden rounded-xl border border-white/10 bg-white/[0.02] transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40">
+                                <div className="aspect-[4/3] overflow-hidden bg-[#151515]"><img src={item.image} alt={item.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" /></div>
+                                <figcaption className="p-5"><p className="mb-3 inline-flex items-center gap-2 rounded-full bg-yellow-400/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-yellow-400"><FontAwesomeIcon icon={faLayerGroup} />{item.category}</p><h2 className="mb-2 font-['Space_Grotesk'] text-xl font-bold text-white">{item.title}</h2><p className="text-sm leading-7 text-white/60">{item.caption}</p></figcaption>
+                            </figure>
+                        ))}
+                    </div>
+                </div>
+                <div className="mt-5 h-1.5 w-full overflow-hidden rounded-full bg-white/10" role="progressbar" aria-label="Gallery scroll progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow={Math.round(scrollProgress)}>
+                    <div className="relative h-full rounded-full bg-yellow-400 transition-[width] duration-300 ease-out" style={{ width: `${scrollProgress}%` }}>
+                        <span className="absolute right-0 top-0 h-full w-10 animate-pulse bg-white/40 blur-sm" />
+                    </div>
                 </div>
             </div>
         </section>
