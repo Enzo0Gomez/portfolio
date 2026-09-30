@@ -13,7 +13,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faGithub, faLinkedin, faReact } from '@fortawesome/free-brands-svg-icons';
 import profileImage from '../../assets/pictures/Dan_toga.jpg';
-import resume from '../../assets/resume/Dan_Raizen_Gomez.docx?url';
+import resume from '../../assets/resume/Gomez_Dan_Raizen_Resume.pdf?url';
 
 const highlights = [
   { label: 'React', icon: faReact },

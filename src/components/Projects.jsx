@@ -12,6 +12,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faReact } from '@fortawesome/free-brands-svg-icons';
 import levelProject from '../assets/pictures/Project_DNA/Project_website_on_LEVEL.png';
+import levelAppProject from '../assets/pictures/Project_DNA/level-app.png';
+import posProject from '../assets/pictures/Project_DNA/pos.png';
 import internshipProject from '../assets/pictures/my_internship/shared image.jpg';
 
 
@@ -21,10 +23,36 @@ const projects = [
         category: 'Web Development',
         image: levelProject,
         summary: 'Feature development work for a relationship and dating platform, focused on clean user interfaces and connected product workflows.',
+        link: 'https://level-match.com/',
+        linkLabel: 'Visit project',
         tags: [
             { label: 'React.js', icon: faReact },
             { label: 'Frontend UI', icon: faMobileScreenButton },
             { label: 'APIs', icon: faServer },
+        ],
+    },
+    {
+        title: 'LEVEL App',
+        category: 'Mobile Development',
+        image: levelAppProject,
+        summary: 'Mobile experience for LEVEL, a relationship and dating platform, built around an intuitive and connected user journey.',
+        link: 'https://play.google.com/store/apps/details?id=com.level_app',
+        linkLabel: 'View on Google Play',
+        tags: [
+            { label: 'Mobile App', icon: faMobileScreenButton },
+            { label: 'Product UI', icon: faLayerGroup },
+            { label: 'APIs', icon: faServer },
+        ],
+    },
+    {
+        title: 'Point of Sale System',
+        category: 'Web Development',
+        image: posProject,
+        summary: 'A point-of-sale system interface designed to make everyday sales transactions and product management simple and organized.',
+        tags: [
+            { label: 'POS System', icon: faDatabase },
+            { label: 'Frontend UI', icon: faMobileScreenButton },
+            { label: 'Product Management', icon: faLayerGroup },
         ],
     },
     {
@@ -61,11 +89,14 @@ export default function Projects() {
                     </span>
                 </div>
 
-                <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+                <div
+                    className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-5 pr-2 [scrollbar-color:rgba(250,204,21,0.7)_rgba(255,255,255,0.08)] [scrollbar-width:thin]"
+                    aria-label="Project gallery"
+                >
                     {projects.map((project) => (
                         <article
                             key={project.title}
-                            className="group overflow-hidden rounded-xl border border-white/10 bg-white/[0.02] transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40"
+                            className="group w-[min(86vw,26rem)] shrink-0 snap-start overflow-hidden rounded-xl border border-white/10 bg-white/[0.02] transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40"
                         >
                             <div className="aspect-[16/9] overflow-hidden bg-[#151515]">
                                 <img
@@ -99,10 +130,12 @@ export default function Projects() {
                                 {project.link && (
                                     <a
                                         href={project.link}
+                                        target={project.link.startsWith('http') ? '_blank' : undefined}
+                                        rel={project.link.startsWith('http') ? 'noreferrer' : undefined}
                                         className="mt-6 inline-flex items-center gap-2 rounded-md bg-yellow-400 px-4 py-2 text-sm font-semibold text-black transition hover:bg-yellow-300"
                                     >
                                         <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="w-3" />
-                                        Open report
+                                        {project.linkLabel ?? 'Open report'}
                                     </a>
                                 )}
                             </div>

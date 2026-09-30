@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase, faImages, faLayerGroup } from '@fortawesome/free-solid-svg-icons';
 import levelProject from '../assets/pictures/Project_DNA/Project_website_on_LEVEL.png';
+import posProject from '../assets/pictures/Project_DNA/pos.png';
 import ciscoImage from '../assets/pictures/my_internship/Cisco.png';
 import odooImage from '../assets/pictures/my_internship/odoo.png';
 import vlanImage from '../assets/pictures/my_internship/vlan.jpg';
@@ -21,6 +22,12 @@ const galleryItems = [
         category: 'DNA',
         caption: 'Web and mobile feature development for a relationship and dating platform.',
         image: levelProject,
+    },
+    {
+        title: 'Point of Sale System',
+        category: 'Project',
+        caption: 'A point-of-sale system interface for organized sales transactions and product management.',
+        image: posProject,
     },
     {
         title: 'Cisco Networking',

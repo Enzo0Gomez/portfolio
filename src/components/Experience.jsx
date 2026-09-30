@@ -22,7 +22,7 @@ const experiences = [
         company: 'DNA',
         logo: DNA,
         role: 'Full Stack Developer',
-        period: 'July 27 - Present',
+        period: 'July 27 - Oct 3, 2026',
         summary: 'Developed and maintained features for LEVEL, a relationship and dating platform, across web and mobile experiences.',
         groups: [
             {
