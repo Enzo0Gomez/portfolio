@@ -1,6 +1,5 @@
-import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarDays, faCode, faGraduationCap, faLaptopCode, faSchool } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDays, faCode, faLaptopCode, faSchool } from '@fortawesome/free-solid-svg-icons';
 
 const education = [
     {
@@ -26,8 +25,8 @@ const education = [
 
 export default function Education() {
     return (
-        <section id="education" className="min-h-screen bg-[#0F0F0F] px-6 py-16 text-[#F5F5F0] sm:px-10">
-            <div className="mx-auto max-w-7xl">
+        <section id="education" className="abstract-pattern min-h-screen bg-[#0F0F0F] px-6 py-16 text-[#F5F5F0] sm:px-10">
+            <div className="mx-auto max-w-8xl">
 
             <div className="mb-12 flex flex-col gap-3 border-b border-white/10 pb-8 sm:flex-row sm:items-end sm:justify-between">
                 <div>

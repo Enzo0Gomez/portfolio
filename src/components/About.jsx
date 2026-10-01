@@ -1,4 +1,3 @@
-import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCode,
@@ -16,7 +15,7 @@ const focusAreas = [
     {
         title: 'Development',
         icon: faCode,
-        description: 'Building responsive web and mobile interfaces with React, React Native, JavaScript, PHP, and MySQL.',
+        description: 'Building responsive web and mobile applications with React.js, React Native, Vue.js, TypeScript, PHP, and Supabase.',
     },
     {
         title: 'IT Support',
@@ -38,8 +37,8 @@ const quickFacts = [
 
 export default function About() {
     return (
-        <section id="about" className="min-h-screen bg-[#0F0F0F] px-6 py-16 text-[#F5F5F0] sm:px-10">
-            <div className="mx-auto max-w-6xl">
+        <section id="about" className="abstract-pattern min-h-screen bg-[#0F0F0F] px-6 py-16 text-[#F5F5F0] sm:px-10">
+            <div className="mx-auto max-w-8xl">
                 <div className="flex items-end justify-between pb-10 mb-12 border-b border-white/10">
                     <div>
                         <p className="flex items-center gap-2 mb-3 text-xs font-semibold tracking-widest uppercase text-yellow-400">
@@ -65,7 +64,7 @@ export default function About() {
                                     Dan Raizen Gomez
                                 </p>
                                 <p className="text-sm leading-7 text-white/65">
-                                    Full Stack Developer with a practical IT support, networking background and Web development skills.
+                                    BSIT graduate and full-stack developer with practical experience in IT support, networking, and responsive web applications.
                                 </p>
                             </div>
                         </div>
@@ -93,10 +92,10 @@ export default function About() {
                             </h2>
                             <div className="space-y-4 text-sm leading-8 text-white/70">
                                 <p>
-                                    I am a recent Bachelor of Science in Information Technology graduate with hands-on experience in web development, mobile development, IT support, and networking. My work has involved building interfaces, improving mobile screens, testing features, troubleshooting systems, and supporting technical operations.
+                                I am a Bachelor of Science in Information Technology graduate with experience in IT support, networking, and full-stack web development. I build responsive applications with React.js, React Native, Tailwind CSS, Supabase, PHP, MySQL, and REST APIs.
                                 </p>
                                 <p>
-                                    I am comfortable learning through real projects and team collaboration. I care about clean layouts, reliable functionality, and practical solutions that make technology easier for people to use.
+                                My work includes developing matching and POS workflows, troubleshooting hardware, software, and network issues, and collaborating through Git and GitHub. I care about clean interfaces, reliable systems, and practical solutions that make technology easier to use.
                                 </p>
                             </div>
                         </div>

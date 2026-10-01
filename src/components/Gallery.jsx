@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase, faImages, faLayerGroup } from '@fortawesome/free-solid-svg-icons';
 import levelProject from '../assets/pictures/Project_DNA/Project_website_on_LEVEL.png';
@@ -105,12 +105,7 @@ const galleryItems = [
 
 export default function Gallery() {
     const [scrollProgress, setScrollProgress] = useState(0);
-    const galleryRef = useRef(null);
     const scrollContainerRef = useRef(null);
-
-    const scrollToItem = (index) => {
-        galleryRef.current?.children[index]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-    };
 
     const handleScroll = () => {
         const gallery = scrollContainerRef.current;
@@ -120,8 +115,8 @@ export default function Gallery() {
     };
 
     return (
-        <section id="gallery" className="min-h-screen bg-[#0F0F0F] px-6 py-16 text-[#F5F5F0] sm:px-10">
-            <div className="mx-auto max-w-7xl">
+        <section id="gallery" className="abstract-pattern min-h-screen bg-[#0F0F0F] px-6 py-16 text-[#F5F5F0] sm:px-10">
+            <div className="mx-auto max-w-8xl">
                 <div className="flex items-end justify-between pb-10 mb-12 border-b border-white/10">
                     <div>
                         <p className="flex items-center gap-2 mb-3 text-xs font-semibold tracking-widest uppercase text-yellow-400">
@@ -139,7 +134,7 @@ export default function Gallery() {
                 </div>
 
                 <div ref={scrollContainerRef} className="-mx-6 overflow-x-auto px-6 pb-2 sm:-mx-10 sm:px-10 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" onScroll={handleScroll} aria-label="Experience photos">
-                    <div ref={galleryRef} className="flex snap-x snap-mandatory gap-5">
+                    <div className="flex snap-x snap-mandatory gap-5">
                         {galleryItems.map((item) => (
                             <figure key={item.title} className="group w-[min(82vw,360px)] shrink-0 snap-start overflow-hidden rounded-xl border border-white/10 bg-white/[0.02] transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40">
                                 <div className="aspect-[4/3] overflow-hidden bg-[#151515]"><img src={item.image} alt={item.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" /></div>

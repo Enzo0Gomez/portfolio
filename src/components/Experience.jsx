@@ -1,4 +1,3 @@
-import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faBriefcase,
@@ -118,7 +117,7 @@ function TagList({ group }) {
 
 export default function Experience({ theme = 'dark' }) {
     return (
-        <section id="experience" className="bg-[#0F0F0F] text-[#F5F5F0] min-h-screen px-6 sm:px-10 py-16">
+        <section id="experience" className="abstract-pattern bg-[#0F0F0F] text-[#F5F5F0] min-h-screen px-6 sm:px-10 py-16">
             <div className="flex items-end justify-between pb-10 mb-12 border-b border-white/10">
                 <div>
                     <p className="flex items-center gap-2 mb-3 text-xs font-semibold tracking-widest uppercase text-yellow-400">
@@ -131,7 +130,7 @@ export default function Experience({ theme = 'dark' }) {
                 </div>
             </div>
 
-            <div className="relative mx-auto max-w-6xl">
+            <div className="relative mx-auto max-w-8xl">
                 <div className="absolute hidden top-4 bottom-4 left-6 w-px bg-white/10 md:block" />
 
                 <div className="space-y-8">

@@ -1,4 +1,3 @@
-import React from 'react';
 import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -7,11 +6,10 @@ import {
   faDownload,
   faFileLines,
   faLaptopCode,
-  faLocationDot,
   faNetworkWired,
   faStar,
 } from '@fortawesome/free-solid-svg-icons';
-import { faFacebook, faGithub, faLinkedin, faReact } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faLinkedin, faReact } from '@fortawesome/free-brands-svg-icons';
 import profileImage from '../../assets/pictures/Dan_toga.jpg';
 import resume from '../../assets/resume/Gomez_Dan_Raizen_Resume.pdf?url';
 
@@ -69,7 +67,7 @@ export default function Home({ setActiveSection }) {
   };
 
   return (
-    <section id="home" className="relative min-h-screen overflow-hidden bg-[#0F0F0F] px-6 py-12 text-[#F5F5F0] sm:px-10 lg:px-16">
+    <section id="home" className="abstract-pattern relative min-h-screen overflow-hidden bg-[#0F0F0F] px-6 py-12 text-[#F5F5F0] sm:px-10 lg:px-16">
       <style>{`
         @keyframes home-rise {
           from { opacity: 0; transform: translateY(18px); }
@@ -105,7 +103,7 @@ export default function Home({ setActiveSection }) {
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-yellow-400/50 to-transparent" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_78%_20%,rgba(250,204,21,0.10),transparent_30%),radial-gradient(circle_at_12%_80%,rgba(255,255,255,0.06),transparent_26%)]" />
 
-      <div className="relative z-10 mx-auto grid min-h-[calc(100vh-6rem)] max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+      <div className="relative z-10 mx-auto grid min-h-[calc(100vh-6rem)] max-w-8xl grid-cols-1 items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="max-w-3xl text-center lg:text-left">
           <div className="home-rise inline-flex items-center gap-2 rounded-full border border-yellow-400/30 bg-yellow-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-yellow-400">
             <FontAwesomeIcon icon={faStar} />

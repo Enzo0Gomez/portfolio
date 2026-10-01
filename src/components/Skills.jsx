@@ -1,4 +1,3 @@
-import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCss3Alt,
@@ -6,15 +5,16 @@ import {
   faGithub,
   faHtml5,
   faJs,
-  faNodeJs,
   faPhp,
   faReact,
+  faVuejs,
+  faAndroid,
+  faFigma,
 } from "@fortawesome/free-brands-svg-icons";
 import {
   faDatabase,
   faMobileScreenButton,
   faNetworkWired,
-  faShieldHalved,
   faScrewdriverWrench,
   faCodeBranch,
   faWind,
@@ -27,18 +27,25 @@ const skillIcons = {
   CSS: faCss3Alt,
   JavaScript: faJs,
   React: faReact,
+  "React Native": faReact,
+  "Vue.js": faVuejs,
+  TypeScript: faJs,
   Tailwind: faWind,
-  "Node.js": faNodeJs,
   PHP: faPhp,
   MySQL: faDatabase,
+  Supabase: faDatabase,
   "REST API": faCodeBranch,
   Git: faGitAlt,
   GitHub: faGithub,
   "Responsive Design": faMobileScreenButton,
-  "Active Directory": faShieldHalved,
-  Networking: faNetworkWired,
-  "Hardware Maintenance": faScrewdriverWrench,
-  Troubleshooting: faBugSlash,
+  "Cisco Networking": faNetworkWired,
+  "VLANs & IP Addressing": faNetworkWired,
+  "Hardware Troubleshooting": faScrewdriverWrench,
+  "Technical Support": faBugSlash,
+  "Odoo ERP": faDatabase,
+  "Android Studio": faAndroid,
+  "Figma & Canva": faFigma,
+  "Basic Python": faJs,
 };
 
 const skillGroups = [
@@ -46,29 +53,30 @@ const skillGroups = [
     tag: "FD",
     title: "Frontend Development",
     accent: "from-sky-400/20",
-    skills: ["HTML", "CSS", "JavaScript", "React", "Tailwind"],
+    skills: ["HTML", "CSS", "JavaScript", "TypeScript", "React", "React Native", "Vue.js", "Tailwind"],
   },
   {
     tag: "BD",
     title: "Backend Development",
     accent: "from-emerald-400/20",
-    skills: ["Node.js", "PHP", "MySQL"],
+    skills: ["PHP", "MySQL", "Supabase", "REST API"],
   },
   {
     tag: "TP",
     title: "Tools & Practices",
     accent: "from-amber-400/20",
-    skills: ["REST API", "Git", "GitHub", "Responsive Design"],
+    skills: ["Git", "GitHub", "Responsive Design", "Android Studio", "Figma & Canva", "Basic Python"],
   },
   {
     tag: "TC",
     title: "Technical",
     accent: "from-fuchsia-400/20",
     skills: [
-      "Active Directory",
-      "Networking",
-      "Hardware Maintenance",
-      "Troubleshooting",
+      "Technical Support",
+      "Hardware Troubleshooting",
+      "Cisco Networking",
+      "VLANs & IP Addressing",
+      "Odoo ERP",
     ],
   },
 ];
@@ -77,9 +85,9 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="w-full min-h-screen bg-[#0F0F0F] text-[#F5F5F0] px-6 py-12 sm:px-10"
+      className="abstract-pattern w-full min-h-screen bg-[#0F0F0F] text-[#F5F5F0] px-6 py-12 sm:px-10"
     >
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-8xl">
         {/* Header */}
         <div className="mb-12 flex flex-col gap-3 border-b border-white/10 pb-8 sm:flex-row sm:items-end sm:justify-between">
           <div>

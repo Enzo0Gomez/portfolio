@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
@@ -20,9 +20,9 @@ const navLinks = [
   { href: "#home", label: "Home", icon: faHouse },
   { href: "#about", label: "About", icon: faUser },
   { href: "#experience", label: "Experience", icon: faBriefcase },
+  { href: "#projects", label: "Projects", icon: faDiagramProject },
   { href: "#education", label: "Education", icon: faGraduationCap },
   { href: "#skills", label: "Skills", icon: faLayerGroup },
-  { href: "#projects", label: "Projects", icon: faDiagramProject },
   { href: "#gallery", label: "Gallery", icon: faImages },
   { href: "#certificates", label: "Certificates", icon: faCertificate },
   { href: "#contact", label: "Contact", icon: faEnvelope },
@@ -80,9 +80,8 @@ const Sidebar = ({ activeSection, setActiveSection, theme, toggleTheme }) => {
       </div>
 
       <div
-        className={`relative z-40 overflow-y-auto bg-yellow-400 transition-all duration-300 ease-in-out md:hidden ${
-          open ? "max-h-[calc(100vh-4rem)] opacity-100" : "max-h-0 opacity-0"
-        }`}
+        className={`relative z-40 overflow-y-auto bg-yellow-400 transition-all duration-300 ease-in-out md:hidden ${open ? "max-h-[calc(100vh-4rem)] opacity-100" : "max-h-0 opacity-0"
+          }`}
       >
         <div className="flex flex-col gap-1 px-4 py-2 sm:px-6">
           {navLinks.map((link, i) => (
@@ -90,11 +89,10 @@ const Sidebar = ({ activeSection, setActiveSection, theme, toggleTheme }) => {
               key={link.href}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              className={`drg-mobile-link px-4 py-3 text-sm font-medium rounded-md transition-all duration-200 hover:translate-x-1 ${
-                isActive(link.href)
+              className={`drg-mobile-link px-4 py-3 text-sm font-medium rounded-md transition-all duration-200 hover:translate-x-1 ${isActive(link.href)
                   ? "bg-black/10 text-black"
                   : "text-black/80 hover:text-black hover:bg-black/10"
-              }`}
+                }`}
               style={open ? { animationDelay: `${i * 40}ms` } : undefined}
             >
               <span className="inline-flex items-center gap-3">
@@ -121,11 +119,10 @@ const Sidebar = ({ activeSection, setActiveSection, theme, toggleTheme }) => {
               key={link.href}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              className={`relative border-l-4 px-2.5 py-2 text-xs font-medium rounded-md transition-all duration-300 ease-in-out hover:translate-x-1 ${
-                isActive(link.href)
+              className={`relative border-l-4 px-2.5 py-2 text-xs font-medium rounded-md transition-all duration-300 ease-in-out hover:translate-x-1 ${isActive(link.href)
                   ? "border-black bg-black/10 text-black"
                   : "border-transparent text-black/80 hover:text-black hover:bg-black/10"
-              }`}
+                }`}
             >
               <span className="inline-flex items-center gap-3">
                 <FontAwesomeIcon icon={link.icon} className="w-4" />
@@ -147,9 +144,8 @@ const Sidebar = ({ activeSection, setActiveSection, theme, toggleTheme }) => {
             </span>
             <span className="h-5 w-9 rounded-full border border-black/20 bg-white/35 p-0.5">
               <span
-                className={`block h-4 w-4 rounded-full bg-black transition-transform duration-200 ${
-                  theme === "light" ? "translate-x-4" : "translate-x-0"
-                }`}
+                className={`block h-4 w-4 rounded-full bg-black transition-transform duration-200 ${theme === "light" ? "translate-x-4" : "translate-x-0"
+                  }`}
               />
             </span>
           </button>

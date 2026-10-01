@@ -1,4 +1,3 @@
-import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faArrowUpRightFromSquare,
@@ -71,8 +70,8 @@ const projects = [
 
 export default function Projects() {
     return (
-        <section id="projects" className="min-h-screen bg-[#0F0F0F] px-6 py-16 text-[#F5F5F0] sm:px-10">
-            <div className="mx-auto max-w-7xl">
+        <section id="projects" className="abstract-pattern min-h-screen bg-[#0F0F0F] px-6 py-16 text-[#F5F5F0] sm:px-10">
+            <div className="mx-auto max-w-8xl">
                 <div className="flex items-end justify-between pb-10 mb-12 border-b border-white/10">
                     <div>
                         <p className="flex items-center gap-2 mb-3 text-xs font-semibold tracking-widest uppercase text-yellow-400">
